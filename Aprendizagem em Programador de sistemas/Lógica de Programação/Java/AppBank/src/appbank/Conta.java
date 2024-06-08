@@ -18,7 +18,10 @@ public class Conta {
     int numConta = 100; 
     
     
-    
+    public  Conta(int numConta, String titular){
+        this.numConta = numConta;
+        this.titular = titular;
+    }
     
     
     

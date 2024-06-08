@@ -13,11 +13,11 @@ public class AppBank {
     public static void main(String[] args) {
         Scanner ler = new Scanner(System.in);
         byte option;
-        String name;
 
         //Função main
         Menu m = new Menu();
         //Criando a instância
+        
         m.Menu_main();
         //Usando o método para o menu principal
         option = ler.nextByte();
