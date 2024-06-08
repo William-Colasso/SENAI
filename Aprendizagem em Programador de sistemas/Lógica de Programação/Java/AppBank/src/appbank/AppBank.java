@@ -17,7 +17,7 @@ public class AppBank {
         //Função main
         Menu m = new Menu();
         //Criando a instância
-        
+
         m.Menu_main();
         //Usando o método para o menu principal
         option = ler.nextByte();
@@ -27,7 +27,7 @@ public class AppBank {
                 m.Limpar();
                 m.Criar_conta();
                 //Criar conta
-                
+
                 break;
             case 2:
                 //Status Conta

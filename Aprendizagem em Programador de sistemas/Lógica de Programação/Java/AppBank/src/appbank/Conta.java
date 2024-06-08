@@ -10,23 +10,16 @@ package appbank;
  */
 public class Conta {
     //Atributos da Classe
-    
+
     byte tpConta = 0;
     String titular = "";
     float saldo = 0.0f;
     float limite = 0.0f;
-    int numConta = 100; 
-    
-    
-    public  Conta(int numConta, String titular){
+    int numConta = 100;
+
+    public Conta(int numConta, String titular) {
         this.numConta = numConta;
         this.titular = titular;
     }
-    
-    
-    
-    
-    
-    
-    
+
 }
