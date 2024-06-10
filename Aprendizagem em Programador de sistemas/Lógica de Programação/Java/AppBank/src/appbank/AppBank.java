@@ -1,54 +1,143 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package appbank;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import java.util.Random;
 import java.util.Scanner;
 
 //OBS:Os comentários estarão referenciando a linha de cima
 public class AppBank {
-    //Criação de variaveis
 
     public static void main(String[] args) {
-        Scanner ler = new Scanner(System.in);
-        byte option;
-
         //Função main
-        Menu m = new Menu();
-        //Criando a instância
 
-        m.Menu_main();
-        //Usando o método para o menu principal
-        option = ler.nextByte();
+        byte option;
+        boolean login = false;
+        //Criação de variaveis
+        Scanner ler = new Scanner(System.in);
+        Random rd = new Random();
+        Conta c = new Conta();
+        //Criando Objetos simples
+        Conta[] con = new Conta[1001];
+        //Criando array de objetos
 
-        switch (option) {
-            case 1:
-                m.Limpar();
-                m.Criar_conta();
-                //Criar conta
+        do {
 
-                break;
-            case 2:
-                //Status Conta
-                break;
-            case 3:
-                //Sacar
-                break;
+            if (login) {
+                c.Menu_Login();
+            } else {
+                c.Menu_main();
+            }
 
-            case 4:
-                //Depositar
-                break;
-            case 5:
-                //Fechar App
-                break;
+            //Usando o método para o menu principal
+            option = ler.nextByte();
 
-            default:
-                System.out.println("Número inválido!");
-                break;
+            switch (option) {
+                case 1:
 
+                    if (login) {
+
+                    } else {
+                        
+                        int numConta;
+                        numConta = rd.nextInt(1001);
+                        con[numConta] = new Conta();
+                        
+                        System.out.println("======================================");
+                        System.out.println("=             Criar Conta            =");
+                        System.out.println("============     MENU    =============");
+                        System.out.println("======================================");
+                        System.out.println("=Titular da conta                    =");
+                        con[numConta].settitular(ler.next());
+                        System.out.println("======================================");
+                        System.out.println("=             Criar Conta            =");
+                        System.out.println("============     MENU    =============");
+                        System.out.println("======================================");
+                        System.out.println("=Tipo da conta                       =");
+                        con[numConta].settpConta(ler.nextByte());
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                    }
+                    //Criar conta
+
+                    break;
+                case 2:
+                    //Status Conta
+                    if (login) {
+
+                    } else {
+
+                    }
+
+                    break;
+                case 3:
+                    if (login) {
+
+                    } else {
+
+                    }
+
+                    //Sacar
+                    break;
+
+                case 4:
+                    if (login) {
+
+                    } else {
+
+                    }
+
+                    //Depositar
+                    break;
+                case 5:
+                    if (login) {
+
+                    } else {
+
+                    }
+
+                    //Fechar App
+                    break;
+                case 6:
+                    if (login) {
+
+                    } else {
+                        option = 7;
+                    }
+
+                    //Depositar
+                    break;
+
+                default:
+                    Limpar();
+                    break;
+
+            }
+
+        } while (option != 3 && option != 6);
+
+    }
+
+    //Limpa Console
+    public final static void Limpar() {
+        try {
+            Robot robot = new Robot();
+            robot.setAutoDelay(10);
+            robot.keyPress(KeyEvent.VK_CONTROL);
+            robot.keyPress(KeyEvent.VK_L);
+            robot.keyRelease(KeyEvent.VK_CONTROL);
+            robot.keyRelease(KeyEvent.VK_L);
+        } catch (AWTException ex) {
         }
-
+        //Método feito por Gabriel Piske AI PSII
     }
     //William Colasso Pereira AI PSII
 }
