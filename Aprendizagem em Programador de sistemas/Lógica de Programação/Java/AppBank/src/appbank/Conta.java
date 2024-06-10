@@ -107,4 +107,11 @@ public class Conta {
         System.out.println("=6-Sair do app");
     }
 
+    
+    
+    //Informação importante: String titular, String senha, int numConta, float saldo, float limite, float limite_Maximo, byte tpConta 
+    public void Status(){
+        
+    }
+    
 }

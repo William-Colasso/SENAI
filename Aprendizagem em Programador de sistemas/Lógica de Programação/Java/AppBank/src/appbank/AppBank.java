@@ -50,13 +50,49 @@ public class AppBank {
                         System.out.println("======================================");
                         System.out.println("=Titular da conta                    =");
                         con[numConta].settitular(ler.next());
+                        Limpar();
                         System.out.println("======================================");
                         System.out.println("=             Criar Conta            =");
                         System.out.println("============     MENU    =============");
                         System.out.println("======================================");
                         System.out.println("=Tipo da conta                       =");
                         con[numConta].settpConta(ler.nextByte());
-                        
+                        Limpar();
+                        System.out.println("======================================");
+                        System.out.println("=             Criar Conta            =");
+                        System.out.println("============     MENU    =============");
+                        System.out.println("======================================");
+                        System.out.println("=Saldo                               =");
+                        con[numConta].setsaldo(ler.nextFloat());
+                        Limpar();
+                        System.out.println("======================================");
+                        System.out.println("=             Criar Conta            =");
+                        System.out.println("============     MENU    =============");
+                        System.out.println("======================================");
+                        System.out.println("=Limite                              =");
+                        con[numConta].setlimite(ler.nextFloat());
+                        Limpar();
+                        System.out.println("======================================");
+                        System.out.println("=             Criar Conta            =");
+                        System.out.println("============     MENU    =============");
+                        System.out.println("======================================");
+                        System.out.println("=Titular da conta                    =");
+                        con[numConta].setsenha(ler.next());
+                        Limpar();
+                        System.out.println("Obrigado por criar uma conta em nosso banco!");
+                        System.out.println("1-Ver Status da conta");
+                        System.out.println("2-Menu Principal");
+                        option = ler.nextByte();
+                        if(option==1){
+                            
+                        }
+                        else if(option ==2){
+                            
+                        }
+                        else{
+                            Limpar();
+                            System.out.println("Número invalido");
+                        }
                         
                         
                         
