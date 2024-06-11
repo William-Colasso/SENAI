@@ -123,7 +123,58 @@ public class Conta {
         System.out.println("=Senha: " + this.senha);
 
     }
+
+   public void depositar(float vlDep) {
+        if (this.tpConta == '0') {
+               if (vlDep <= 1000 - this.limite) {
+                this.limite += vlDep;
+               } else {
+                   vlDep -= 1000 - this.limite;
+                   this.limite = 1000;
+                   this.saldo += vlDep;
+               }
+           } 
+           else {
+               this.saldo += vlDep;
+                  System.out.println("");
+           }
+           System.out.println("Foram depositados na sua conta R$" + vlDep + ".");
+       }
+   
+   
+   
+   
+   
+   
+   
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    public void transferir(float vlTransf, Conta conta) {
+        if (this.tpConta == '0') {
+            if (this.saldo + this.limite >= vlTransf) {
+                System.out.println("Estão sendo transferidos R$" + vlTransf + ", para  " + conta.titular + "....");
+                if (vlTransf <= this.saldo) {
+                    this.saldo -= vlTransf;
+                } else {
+                    this.limite += this.saldo - vlTransf;
+                    this.saldo = 0.0f;
+                }
+                conta.saldo += vlTransf;
+                System.out.println("Foram transferidos R$" + vlTransf + ", para  " + conta.titular + ".");
+            } else {
+                System.out.println("Você não tem Saldo suficiente para esta operação, mesmo com seu limite atual.");
+            }
+        }
+    }
 
 }
