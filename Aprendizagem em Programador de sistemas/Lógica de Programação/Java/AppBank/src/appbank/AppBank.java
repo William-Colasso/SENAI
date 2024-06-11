@@ -16,6 +16,7 @@ public class AppBank {
         boolean login = false;
         //Criação de variaveis
         Scanner ler = new Scanner(System.in);
+        Scanner ler2 = new Scanner(System.in);
         Random rd = new Random();
         Conta c = new Conta();
         //Criando Objetos simples
@@ -43,13 +44,13 @@ public class AppBank {
                         int numConta;
                         numConta = rd.nextInt(1001);
                         con[numConta] = new Conta();
-                        
+                        String senha, titular;
                         System.out.println("======================================");
                         System.out.println("=             Criar Conta            =");
                         System.out.println("============     MENU    =============");
                         System.out.println("======================================");
                         System.out.println("=Titular da conta                    =");
-                        con[numConta].settitular(ler.nextLine());
+                        con[numConta].settitular(ler2.nextLine());
                         Limpar();
                         System.out.println("======================================");
                         System.out.println("=             Criar Conta            =");
@@ -65,48 +66,44 @@ public class AppBank {
                         System.out.println("=Saldo                               =");
                         con[numConta].setsaldo(ler.nextFloat());
                         Limpar();
-                        System.out.println("======================================");
-                        System.out.println("=             Criar Conta            =");
-                        System.out.println("============     MENU    =============");
-                        System.out.println("======================================");
-                        System.out.println("=Limite                              =");
-                        con[numConta].setlimite(ler.nextFloat());
-                        Limpar();
+                        if (con[numConta].gettpConta() == 0) {
+                            System.out.println("======================================");
+                            System.out.println("=             Criar Conta            =");
+                            System.out.println("============     MENU    =============");
+                            System.out.println("======================================");
+                            System.out.println("=Limite                              =");
+                            con[numConta].setlimite(ler.nextFloat());
+                            Limpar();
+                        }
                         System.out.println("======================================");
                         System.out.println("=             Criar Conta            =");
                         System.out.println("============     MENU    =============");
                         System.out.println("======================================");
                         System.out.println("=Senha                               =");
-                        con[numConta].setsenha(ler.nextLine());
+                        con[numConta].setsenha(ler2.nextLine());
                         Limpar();
                         System.out.println("Obrigado por criar uma conta em nosso banco!");
                         System.out.println("1-Ver Status da conta");
                         System.out.println("2-Menu Principal");
                         option = ler.nextByte();
-                    switch (option) {
-                    case 1:
-                        Limpar();
-                        con[numConta].Status();
-                        System.out.println("Digite qualquer coisa para continuar:");
-                        ler.next();
-                        Limpar();
-                        break;
-                    case 2:
-                        Limpar();
-                        break;
-                    default:
-                        Limpar();
-                        System.out.println("Número invalido");
-                        break;
-                }
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
+
+                        switch (option) {
+                            case 1:
+                                Limpar();
+                                con[numConta].Status();
+                                System.out.println("Digite qualquer coisa para continuar:");
+                                ler.next();
+                                Limpar();
+                                break;
+                            case 2:
+                                Limpar();
+                                break;
+                            default:
+                                Limpar();
+                                System.out.println("Número invalido");
+                                break;
+                        }
+
                     }
                     //Criar conta
 

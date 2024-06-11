@@ -117,9 +117,15 @@ public class Conta {
         System.out.println("=Tipo da conta: " + this.tpConta);
         System.out.println("=Titular: " + this.titular);
         System.out.println("=Saldo: " + this.saldo);
-        System.out.println("=Limite: " + this.limite_Maximo+"/"+this.limite);
+        if (this.tpConta == 0) {
+            System.out.println("=Limite: " + this.limite_Maximo + "/" + this.limite);
+        }
         System.out.println("=Senha: " + this.senha);
 
+    }
+    
+    public void Login(){
+        
     }
 
 }
