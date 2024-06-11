@@ -30,9 +30,9 @@ public class AppBank {
         do {
 
             if (login) {
-                c.Menu_Login();
+                c.menu_Login();
             } else {
-                c.Menu_main();
+                c.menu_main();
             }
 
             //Usando o método para o menu principal
@@ -44,93 +44,93 @@ public class AppBank {
                     if (login) {
 
                     } else {
-                        Limpar();
+                        limpar();//limpando a tela
 
-                        numConta = rd.nextInt(1001);
-                        con[numConta] = new Conta();
-                        con[numConta].setnumConta(numConta);
-                        String titular;
+                        numConta = rd.nextInt(1001);    //Aleatoriza um número de 0 a 1001
+                        con[numConta] = new Conta(); //Array de objetos da Classe Conta
+                        con[numConta].setnumConta(numConta); //Atribuindo um número de conta a este objeto
                         System.out.println("======================================");
                         System.out.println("=             Criar Conta            =");
-                        System.out.println("============     MENU    =============");
+                        System.out.println("============     MENU    =============");       //Desenho da criação da conta, nome titular
                         System.out.println("======================================");
                         System.out.println("=Titular da conta                    =");
                         con[numConta].settitular(ler2.nextLine());
-                        Limpar();
+                        limpar();//limpando a tela
                         System.out.println("======================================");
                         System.out.println("=             Criar Conta            =");
-                        System.out.println("============     MENU    =============");
+                        System.out.println("============     MENU    =============");       //Desenho da criação da conta, Tipo da conta
                         System.out.println("======================================");
                         System.out.println("=Tipo da conta                       =");
                         con[numConta].settpConta(ler.nextByte());
-                        Limpar();
+                        limpar();//limpando a tela
                         System.out.println("======================================");
                         System.out.println("=             Criar Conta            =");
-                        System.out.println("============     MENU    =============");
+                        System.out.println("============     MENU    =============");       //Desenho da criação da conta, saldo
                         System.out.println("======================================");
                         System.out.println("=Saldo                               =");
                         con[numConta].setsaldo(ler.nextFloat());
-                        Limpar();
+                        limpar();//limpando a tela
                         if (con[numConta].gettpConta() == 0) {
                             System.out.println("======================================");
                             System.out.println("=             Criar Conta            =");
-                            System.out.println("============     MENU    =============");
+                            System.out.println("============     MENU    =============");       //Desenho da criação da conta, limite da conta
                             System.out.println("======================================");
                             System.out.println("=Limite                              =");
                             con[numConta].setlimite(ler.nextFloat());
-                            Limpar();
+                            limpar();//limpando a tela
                         }
                         System.out.println("======================================");
                         System.out.println("=             Criar Conta            =");
-                        System.out.println("============     MENU    =============");
+                        System.out.println("============     MENU    =============");       //Desenho da criação da conta, senha da conta
                         System.out.println("======================================");
                         System.out.println("=Senha                               =");
                         con[numConta].setsenha(ler2.nextLine());
-                        Limpar();
-                        System.out.println("Obrigado por criar uma conta em nosso banco!");
-                        System.out.println("1-Ver Status da conta");
+                        limpar();//limpando a tela
+                        System.out.println("Obrigado por criar uma conta em nosso banco!");     //Agradecendo ao usuário pela criação da conta
+                        System.out.println("1-Ver status da conta");
                         System.out.println("2-Menu Principal");
-                        option = ler.nextByte();
+                        option = ler.nextByte();    //Ler a opção que o usuario preferir
 
-                        switch (option) {
+                        switch (option) {   //Analisando a escolha do usuario
                             case 1:
-                                Limpar();
-                                con[numConta].Status();
+                                limpar();//limpando a tela
+                                con[numConta].status();
                                 System.out.println("Digite qualquer coisa para continuar:");
                                 ler.next();
-                                Limpar();
+                                limpar();//limpando a tela
                                 break;
                             case 2:
-                                Limpar();
+                                limpar();//limpando a tela
                                 break;
                             default:
-                                Limpar();
+                                limpar();//limpando a tela
                                 System.out.println("Número invalido");
                                 break;
                         }
 
                     }
-                    //Criar conta
+                    //Criar conta ou sair da conta
 
                     break;
                 case 2:
-                    //Status Conta
+                    //status Conta ou Login
                     if (login) {
 
                     } else {
+                        limpar(); //Limpando a tela
                         System.out.println("======================================");
                         System.out.println("=              L O G I N             =");
-                        System.out.println("============     MENU    =============");
+                        System.out.println("============     MENU    =============");       //escrita menu Login, pedindo o numero da conta
                         System.out.println("======================================");
                         System.out.println("=Nº da conta:                        =");
                         numConta = ler.nextInt();
-                        if (con[numConta] == null) {
-                            Limpar();
-                            System.out.println("Número de conta Inválido");
+                        if (con[numConta] == null) { //Conferindo se a conta existe
+                            limpar();//limpando a tela
+                            System.out.println("Número de conta Inválido"); //Caso não exista essa mensagem ira aparecer em cima do menu principal
                         } else {
                             System.out.println("======================================");
                             System.out.println("=              L O G I N             =");
-                            System.out.println("============     MENU    =============");
+                            System.out.println("============     MENU    =============");       //escrita menu Login, a senha
                             System.out.println("======================================");
                             System.out.println("=Senha:                              =");
                             senha = ler2.nextLine();
@@ -139,10 +139,10 @@ public class AppBank {
                             if (senha_correta == null ? senha == null : senha_correta.equals(senha)) {
                                 num_login = numConta;
                                 login = true;
-                                Limpar();
+                                limpar();//limpando a tela
                                 System.out.println("Login feito com sucesso!");
                             } else {
-                                Limpar();
+                                limpar();//limpando a tela
                                 System.out.println("Senha incorreta!");
                                 login = false;
                             }
@@ -190,7 +190,7 @@ public class AppBank {
                     break;
 
                 default:
-                    Limpar();
+                    limpar();//limpando a tela
                     break;
 
             }
@@ -200,7 +200,7 @@ public class AppBank {
     }
 
     //Limpa Console
-    public final static void Limpar() {
+    public final static void limpar() {
         try {
             Robot robot = new Robot();
             robot.setAutoDelay(10);

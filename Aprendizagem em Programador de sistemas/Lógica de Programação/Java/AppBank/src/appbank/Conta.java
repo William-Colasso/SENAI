@@ -84,7 +84,7 @@ public class Conta {
         }
     }
 
-    public void Menu_main() {
+    public void menu_main() {
         System.out.println("======================================");
         System.out.println("=     App de gerenciamento bancário =");
         System.out.println("============     MENU    =============");
@@ -94,7 +94,7 @@ public class Conta {
         System.out.println("=3-Fechar App                        =");
     }
 
-    public void Menu_Login() {
+    public void menu_Login() {
         System.out.println("======================================");
         System.out.println("=     App de gerenciamento bancário  =");
         System.out.println("============     MENU    =============");
@@ -108,7 +108,7 @@ public class Conta {
     }
 
     //Informação importante: String titular, String senha, int numConta, float saldo, float limite, float limite_Maximo, byte tpConta 
-    public void Status() {
+    public void status() {
         System.out.println("======================================");
         System.out.println("=             S T A T U S            =");
         System.out.println("============     MENU    =============");
@@ -124,8 +124,6 @@ public class Conta {
 
     }
     
-    public void Login(){
-        
-    }
+    
 
 }
