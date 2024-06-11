@@ -14,6 +14,10 @@ public class AppBank {
 
         byte option;
         boolean login = false;
+        int numConta;
+        int num_login;
+        String senha;
+        String senha_correta;
         //Criação de variaveis
         Scanner ler = new Scanner(System.in);
         Scanner ler2 = new Scanner(System.in);
@@ -41,11 +45,11 @@ public class AppBank {
 
                     } else {
                         Limpar();
-                        int numConta;
+
                         numConta = rd.nextInt(1001);
                         con[numConta] = new Conta();
                         con[numConta].setnumConta(numConta);
-                        String senha, titular;
+                        String titular;
                         System.out.println("======================================");
                         System.out.println("=             Criar Conta            =");
                         System.out.println("============     MENU    =============");
@@ -114,7 +118,36 @@ public class AppBank {
                     if (login) {
 
                     } else {
+                        System.out.println("======================================");
+                        System.out.println("=              L O G I N             =");
+                        System.out.println("============     MENU    =============");
+                        System.out.println("======================================");
+                        System.out.println("=Nº da conta:                        =");
+                        numConta = ler.nextInt();
+                        if (con[numConta] == null) {
+                            Limpar();
+                            System.out.println("Número de conta Inválido");
+                        } else {
+                            System.out.println("======================================");
+                            System.out.println("=              L O G I N             =");
+                            System.out.println("============     MENU    =============");
+                            System.out.println("======================================");
+                            System.out.println("=Senha:                              =");
+                            senha = ler2.nextLine();
+                            senha_correta = con[numConta].getsenha();
+                            System.out.println(senha_correta);
+                            if (senha_correta == null ? senha == null : senha_correta.equals(senha)) {
+                                num_login = numConta;
+                                login = true;
+                                Limpar();
+                                System.out.println("Login feito com sucesso!");
+                            } else {
+                                Limpar();
+                                System.out.println("Senha incorreta!");
+                                login = false;
+                            }
 
+                        }
                     }
 
                     break;

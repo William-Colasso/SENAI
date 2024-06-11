@@ -86,7 +86,7 @@ public class Conta {
 
     public void Menu_main() {
         System.out.println("======================================");
-        System.out.println("=     App de gerenciamento bancário  =");
+        System.out.println("=     App de gerenciamento bancário =");
         System.out.println("============     MENU    =============");
         System.out.println("======================================");
         System.out.println("=1-Criar Conta                       =");
