@@ -44,6 +44,7 @@ public class AppBank {
                         int numConta;
                         numConta = rd.nextInt(1001);
                         con[numConta] = new Conta();
+                        con[numConta].setnumConta(numConta);
                         String senha, titular;
                         System.out.println("======================================");
                         System.out.println("=             Criar Conta            =");
