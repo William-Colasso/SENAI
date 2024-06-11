@@ -107,11 +107,19 @@ public class Conta {
         System.out.println("=6-Sair do app");
     }
 
-    
-    
     //Informação importante: String titular, String senha, int numConta, float saldo, float limite, float limite_Maximo, byte tpConta 
-    public void Status(){
-        
+    public void Status() {
+        System.out.println("======================================");
+        System.out.println("=             S T A T U S            =");
+        System.out.println("============     MENU    =============");
+        System.out.println("======================================");
+        System.out.println("=Nº da conta: " + this.numConta);
+        System.out.println("=Tipo da conta: " + this.tpConta);
+        System.out.println("=Titular: " + this.titular);
+        System.out.println("=Saldo: " + this.saldo);
+        System.out.println("=Limite: " + this.limite_Maximo+"/"+this.limite);
+        System.out.println("=Senha: " + this.senha);
+
     }
-    
+
 }

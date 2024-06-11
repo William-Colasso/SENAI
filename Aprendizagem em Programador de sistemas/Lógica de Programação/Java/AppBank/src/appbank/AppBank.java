@@ -39,7 +39,7 @@ public class AppBank {
                     if (login) {
 
                     } else {
-                        
+                        Limpar();
                         int numConta;
                         numConta = rd.nextInt(1001);
                         con[numConta] = new Conta();
@@ -49,7 +49,7 @@ public class AppBank {
                         System.out.println("============     MENU    =============");
                         System.out.println("======================================");
                         System.out.println("=Titular da conta                    =");
-                        con[numConta].settitular(ler.next());
+                        con[numConta].settitular(ler.nextLine());
                         Limpar();
                         System.out.println("======================================");
                         System.out.println("=             Criar Conta            =");
@@ -76,23 +76,29 @@ public class AppBank {
                         System.out.println("=             Criar Conta            =");
                         System.out.println("============     MENU    =============");
                         System.out.println("======================================");
-                        System.out.println("=Titular da conta                    =");
-                        con[numConta].setsenha(ler.next());
+                        System.out.println("=Senha                               =");
+                        con[numConta].setsenha(ler.nextLine());
                         Limpar();
                         System.out.println("Obrigado por criar uma conta em nosso banco!");
                         System.out.println("1-Ver Status da conta");
                         System.out.println("2-Menu Principal");
                         option = ler.nextByte();
-                        if(option==1){
-                            
-                        }
-                        else if(option ==2){
-                            
-                        }
-                        else{
-                            Limpar();
-                            System.out.println("Número invalido");
-                        }
+                    switch (option) {
+                    case 1:
+                        Limpar();
+                        con[numConta].Status();
+                        System.out.println("Digite qualquer coisa para continuar:");
+                        ler.next();
+                        Limpar();
+                        break;
+                    case 2:
+                        Limpar();
+                        break;
+                    default:
+                        Limpar();
+                        System.out.println("Número invalido");
+                        break;
+                }
                         
                         
                         
