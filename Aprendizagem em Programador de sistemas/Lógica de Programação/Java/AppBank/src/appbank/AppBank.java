@@ -12,26 +12,30 @@ public class AppBank {
     public static void main(String[] args) {
         //Função main
 
-        byte option;
+        byte option = 0;
         boolean login = false;
-        int numConta;
-        int num_login;
-        String senha;
-        String senha_correta;
+        int numConta = 0;
+        int num_login = 0;
+        float auxi = 0;
+        String senha = "123";
+        String senha_correta = "1234";
+
         //Criação de variaveis
         Scanner ler = new Scanner(System.in);
         Scanner ler2 = new Scanner(System.in);
         Random rd = new Random();
         Conta c = new Conta();
         //Criando Objetos simples
-        Conta[] con = new Conta[1001];
+        Conta[] con = new Conta[1002];
         //Criando array de objetos
 
         do {
 
             if (login) {
+                limpar();
                 c.menu_Login();
             } else {
+                limpar();
                 c.menu_main();
             }
 
@@ -42,53 +46,69 @@ public class AppBank {
                 case 1:
 
                     if (login) {
-
+                        login = false;
+                        limpar();
                     } else {
                         limpar();//limpando a tela
 
                         numConta = rd.nextInt(1001);    //Aleatoriza um número de 0 a 1001
                         con[numConta] = new Conta(); //Array de objetos da Classe Conta
                         con[numConta].setnumConta(numConta); //Atribuindo um número de conta a este objeto
+
                         System.out.println("======================================");
                         System.out.println("=             Criar Conta            =");
                         System.out.println("============     MENU    =============");       //Desenho da criação da conta, nome titular
                         System.out.println("======================================");
                         System.out.println("=Titular da conta                    =");
                         con[numConta].settitular(ler2.nextLine());
-                        limpar();//limpando a tela
+
+                        //limpar();//limpando a tela
                         System.out.println("======================================");
                         System.out.println("=             Criar Conta            =");
                         System.out.println("============     MENU    =============");       //Desenho da criação da conta, Tipo da conta
-                        System.out.println("======================================");
-                        System.out.println("=Tipo da conta                       =");
+                        System.out.println("===========Tipo da conta=============");
+                        System.out.println("=[0-Corrente 1-salario 2-Poupança]   =");
+
                         con[numConta].settpConta(ler.nextByte());
+
                         limpar();//limpando a tela
+
                         System.out.println("======================================");
                         System.out.println("=             Criar Conta            =");
                         System.out.println("============     MENU    =============");       //Desenho da criação da conta, saldo
                         System.out.println("======================================");
                         System.out.println("=Saldo                               =");
+
                         con[numConta].setsaldo(ler.nextFloat());
+
                         limpar();//limpando a tela
+
                         if (con[numConta].gettpConta() == 0) {
                             System.out.println("======================================");
                             System.out.println("=             Criar Conta            =");
                             System.out.println("============     MENU    =============");       //Desenho da criação da conta, limite da conta
                             System.out.println("======================================");
                             System.out.println("=Limite                              =");
+
                             con[numConta].setlimite(ler.nextFloat());
+
                             limpar();//limpando a tela
+
                         }
                         System.out.println("======================================");
                         System.out.println("=             Criar Conta            =");
                         System.out.println("============     MENU    =============");       //Desenho da criação da conta, senha da conta
                         System.out.println("======================================");
                         System.out.println("=Senha                               =");
+
                         con[numConta].setsenha(ler2.nextLine());
+
                         limpar();//limpando a tela
+
                         System.out.println("Obrigado por criar uma conta em nosso banco!");     //Agradecendo ao usuário pela criação da conta
                         System.out.println("1-Ver status da conta");
                         System.out.println("2-Menu Principal");
+
                         option = ler.nextByte();    //Ler a opção que o usuario preferir
 
                         switch (option) {   //Analisando a escolha do usuario
@@ -113,9 +133,16 @@ public class AppBank {
 
                     break;
                 case 2:
-                    //status Conta ou Login
+                    //Sacar ou Login
                     if (login) {
 
+                        System.out.println("======================================");
+                        System.out.println("=              S A Q U E             =");
+                        System.out.println("============     MENU    =============");       //escrita menu Saque, pedindo o valor requerido
+                        System.out.println("======================================");
+                        System.out.println("=Valor de saque:                     =");
+                        con[num_login].sacar(ler.nextInt());
+                        ler.next();
                     } else {
                         limpar(); //Limpando a tela
                         System.out.println("======================================");
@@ -154,6 +181,28 @@ public class AppBank {
                 case 3:
                     if (login) {
 
+                        System.out.println("======================================");
+                        System.out.println("=      T R A N S F E R Ê N C I A     =");
+                        System.out.println("============     MENU    =============");
+                        System.out.println("======================================");
+                        System.out.println("=Valor da transferência:             =");
+                        auxi = ler.nextInt();
+                        limpar();
+                        System.out.println("======================================");
+                        System.out.println("=      T R A N S F E R Ê N C I A     =");
+                        System.out.println("============     MENU    =============");
+                        System.out.println("======================================");
+                        System.out.println("=Nº da conta de envio                =");
+                        numConta = ler.nextInt();
+                        if (con[numConta] == null) {
+                            System.out.println("Conta Inexistente.");
+                        } else {
+                            con[num_login].transferir(auxi, con[numConta]);
+                        }
+
+                        System.out.println("Digite algo para continuar:");
+                        ler.next();
+                        option = 9;
                     } else {
 
                     }
@@ -163,7 +212,13 @@ public class AppBank {
 
                 case 4:
                     if (login) {
-
+                        System.out.println("======================================");
+                        System.out.println("=      T R A N S F E R Ê N C I A     =");
+                        System.out.println("============     MENU    =============");
+                        System.out.println("======================================");
+                        System.out.println("=Valor depositado:                   =");
+                        auxi = ler.nextFloat();
+                        con[num_login].depositar(auxi);
                     } else {
 
                     }
@@ -172,7 +227,30 @@ public class AppBank {
                     break;
                 case 5:
                     if (login) {
+                        limpar();
+                        System.out.println("======================================");
+                        System.out.println("=             S T A T U S            =");
+                        System.out.println("============     MENU    =============");       //escrita menu Login, pedindo a opção
+                        System.out.println("======================================");
+                        System.out.println("=1-Ver sua conta                     =");
+                        System.out.println("=2-Ver de outra conta                =");
+                        option = ler.nextByte();
 
+                        if (option == 1) {
+                            con[num_login].status();
+                            System.out.println("Digite qualquer coisa para continuar");
+                            ler.next();
+                        } else if (option == 2) {
+                            System.out.println("Nº da conta:");
+                            numConta = ler.nextInt();
+                            limpar();
+                            con[numConta].status();
+                            System.out.println("Digite qualquer coisa para continuar");
+                            ler.next();
+                        } else {
+                            limpar();
+                            System.out.println("Número inválido!");
+                        }
                     } else {
 
                     }
@@ -210,7 +288,7 @@ public class AppBank {
             robot.keyRelease(KeyEvent.VK_L);
         } catch (AWTException ex) {
         }
-        //Método feito por Gabriel Piske AI PSII
+        //Método feito por Gabriel Piske AI PSII, utilizado com permissão.
     }
     //William Colasso Pereira AI PSII
 }

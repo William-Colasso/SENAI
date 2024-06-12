@@ -20,7 +20,13 @@ public class Conta {
     private String senha = "";
 
     public void settpConta(byte tpConta) {
-        this.tpConta = tpConta;
+        if (this.tpConta == 0 | this.tpConta == 1 | this.tpConta == 2) {
+            this.tpConta = tpConta;
+        } else {
+            System.out.println("Tipo de conta inexistente!");
+            this.tpConta = 2;
+        }
+
     }
 
     public byte gettpConta() {
@@ -68,21 +74,7 @@ public class Conta {
         return this.senha;
     }
 
-    public void Deposito(float vlDep) {
-
-        if (this.tpConta == 0) {
-            if (vlDep <= this.limite_Maximo - this.limite) {
-                this.limite += vlDep;
-            } else {
-                vlDep = this.limite_Maximo - this.limite;
-                this.saldo += vlDep;
-                this.limite = this.limite_Maximo;
-            }
-
-        } else {
-            this.saldo += vlDep;
-        }
-    }
+ 
 
     public void menu_main() {
         System.out.println("======================================");
@@ -96,14 +88,14 @@ public class Conta {
 
     public void menu_Login() {
         System.out.println("======================================");
-        System.out.println("=     App de gerenciamento bancário  =");
+        System.out.println("=     App de gerenciamento bancário =");
         System.out.println("============     MENU    =============");
         System.out.println("======================================");
         System.out.println("=1-Sair da conta");
         System.out.println("=2-Sacar");
         System.out.println("=3-Transferir");
         System.out.println("=4-Depositar");
-        System.out.println("=5-Lista de contas");
+        System.out.println("=5-Status");
         System.out.println("=6-Sair do app");
     }
 
@@ -124,43 +116,24 @@ public class Conta {
 
     }
 
-   public void depositar(float vlDep) {
-        if (this.tpConta == '0') {
-               if (vlDep <= 1000 - this.limite) {
+    public void depositar(float vlDep) {
+        if (this.tpConta == 0) {
+            if (vlDep <= this.limite_Maximo - this.limite) {
                 this.limite += vlDep;
-               } else {
-                   vlDep -= 1000 - this.limite;
-                   this.limite = 1000;
-                   this.saldo += vlDep;
-               }
-           } 
-           else {
-               this.saldo += vlDep;
-                  System.out.println("");
-           }
-           System.out.println("Foram depositados na sua conta R$" + vlDep + ".");
-       }
-   
-   
-   
-   
-   
-   
-   
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+            } else {
+                vlDep -= this.limite_Maximo - this.limite;
+                this.limite = this.limite_Maximo;
+                this.saldo += vlDep;
+            }
+        } else {
+            this.saldo += vlDep;
+            System.out.println("");
+        }
+        System.out.println("Foram adicionados  R$" + vlDep + ". "+"A conta de: "+this.titular);
+    }
+
     public void transferir(float vlTransf, Conta conta) {
-        if (this.tpConta == '0') {
+        if (this.tpConta == 0) {
             if (this.saldo + this.limite >= vlTransf) {
                 System.out.println("Estão sendo transferidos R$" + vlTransf + ", para  " + conta.titular + "....");
                 if (vlTransf <= this.saldo) {
@@ -169,12 +142,48 @@ public class Conta {
                     this.limite += this.saldo - vlTransf;
                     this.saldo = 0.0f;
                 }
-                conta.saldo += vlTransf;
+                conta.depositar(vlTransf);
                 System.out.println("Foram transferidos R$" + vlTransf + ", para  " + conta.titular + ".");
             } else {
                 System.out.println("Você não tem Saldo suficiente para esta operação, mesmo com seu limite atual.");
             }
+        } else {
+            if (this.saldo >= vlTransf) {
+                System.out.println("Foram Transferidos R$" + vlTransf + ".");
+                this.saldo -= vlTransf;
+                conta.depositar(vlTransf);
+            } else {
+                System.out.println("Você não tem saldo suficiente para essa transação.");
+            }
         }
+    }
+
+    public void sacar(float vlSac) {
+        System.out.println("Estão sendo sacados R$" + vlSac + "....");
+        if (this.tpConta == 0) {
+            if (this.saldo + this.limite >= vlSac) {
+
+                if (vlSac <= this.saldo) {
+                    this.saldo -= vlSac;
+                } else {
+                    this.limite += this.saldo - vlSac;
+                    this.saldo = 0.0f;
+                }
+
+                System.out.println("Foram sacados R$" + vlSac + ".");
+            } else {
+                System.out.println("Você não tem Saldo suficiente para esta operação, mesmo com seu limite atual.");
+            }
+        } else {
+            if (this.saldo >= vlSac) {
+                System.out.println("Foram sacados R$" + vlSac + ".");
+                this.saldo -= vlSac;
+            } else {
+                System.out.println("Você não tem saldo suficiente para essa transação.");
+            }
+        }
+
+        System.out.println("Digite qualquer coisa para continuar:");
     }
 
 }
