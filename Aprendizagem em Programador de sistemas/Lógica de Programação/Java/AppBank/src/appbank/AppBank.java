@@ -23,6 +23,7 @@ public class AppBank {
         //Criação de variaveis
         Scanner ler = new Scanner(System.in);
         Scanner ler2 = new Scanner(System.in);
+        Scanner ler3 = new Scanner(System.in);
         Random rd = new Random();
         Conta c = new Conta();
         //Criando Objetos simples
@@ -116,7 +117,7 @@ public class AppBank {
                                 limpar();//limpando a tela
                                 con[numConta].status();
                                 System.out.println("Digite qualquer coisa para continuar:");
-                                ler.next();
+                                ler3.next();
                                 limpar();//limpando a tela
                                 break;
                             case 2:
@@ -142,7 +143,7 @@ public class AppBank {
                         System.out.println("======================================");
                         System.out.println("=Valor de saque:                     =");
                         con[num_login].sacar(ler.nextInt());
-                        ler.next();
+                        ler3.next();
                     } else {
                         limpar(); //Limpando a tela
                         System.out.println("======================================");
@@ -201,7 +202,7 @@ public class AppBank {
                         }
 
                         System.out.println("Digite algo para continuar:");
-                        ler.next();
+                        ler3.next();
                         option = 9;
                     } else {
 
@@ -239,14 +240,14 @@ public class AppBank {
                         if (option == 1) {
                             con[num_login].status();
                             System.out.println("Digite qualquer coisa para continuar");
-                            ler.next();
+                            ler3.next();
                         } else if (option == 2) {
                             System.out.println("Nº da conta:");
                             numConta = ler.nextInt();
                             limpar();
                             con[numConta].status();
                             System.out.println("Digite qualquer coisa para continuar");
-                            ler.next();
+                            ler3.next();
                         } else {
                             limpar();
                             System.out.println("Número inválido!");

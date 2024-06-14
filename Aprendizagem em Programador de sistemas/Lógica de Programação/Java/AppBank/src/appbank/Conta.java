@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package appbank;
 
 /**
@@ -19,6 +15,9 @@ public class Conta {
     private int numConta = 100;
     private String senha = "";
 
+    
+    //Definindo Getters e Setters
+    
     public void settpConta(byte tpConta) {
         if (this.tpConta == 0 | this.tpConta == 1 | this.tpConta == 2) {
             this.tpConta = tpConta;
