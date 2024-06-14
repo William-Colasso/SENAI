@@ -74,8 +74,6 @@ public class Conta {
         return this.senha;
     }
 
- 
-
     public void menu_main() {
         System.out.println("======================================");
         System.out.println("=     App de gerenciamento bancário =");
@@ -129,7 +127,7 @@ public class Conta {
             this.saldo += vlDep;
             System.out.println("");
         }
-        System.out.println("Foram adicionados  R$" + vlDep + ". "+"A conta de: "+this.titular);
+        System.out.println("Foram adicionados  R$" + vlDep + ". " + "A conta de: " + this.titular);
     }
 
     public void transferir(float vlTransf, Conta conta) {
