@@ -47,7 +47,7 @@ public class Appcalculadora {
         //Input
         JTextField input_prompt = new JTextField();
         input_prompt.setBounds(17, 20, 350, 95);
-        input_prompt.setFont(new Font("Arial", Font.BOLD, 14));      //Nova fonte Arial
+        input_prompt.setFont(new Font("Arial", Font.BOLD, 18));      //Nova fonte Arial
         input_prompt.setEditable(false);
         input_prompt.setText("");
         input_prompt.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -208,7 +208,7 @@ public class Appcalculadora {
         bt_X.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                input_prompt.setText(input_prompt.getText()+"X");
+                input_prompt.setText(input_prompt.getText()+"*");
             }
         
         });
