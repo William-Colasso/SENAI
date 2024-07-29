@@ -15,7 +15,7 @@ public class Tracer {
     public static void main(String[] args) {
         JFrame form = new JFrame();
        form.setTitle("Graphic Tracer");
-       form.setSize(1920, 1080);
+       form.setSize(960, 540);
        form.setLocationRelativeTo(null);
        form.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        form.setVisible(true);
