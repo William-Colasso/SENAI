@@ -185,6 +185,8 @@ public class Calculadora {
             return esquerdo + direito;
         } else if (operador.equals("-")) {
             return esquerdo - direito;
+        }  else if (operador.equals("^")) {
+            return esquerdo - direito;
         } else if (operador.equals("*")) {
             return esquerdo * direito;
         } else if (operador.equals("/")) {

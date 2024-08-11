@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package tracer;
 
 import java.awt.*;
@@ -14,11 +10,15 @@ public class Tracer {
      */
     public static void main(String[] args) {
         JFrame form = new JFrame();
-       form.setTitle("Graphic Tracer");
-       form.setSize(960, 540);
-       form.setLocationRelativeTo(null);
-       form.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-       form.setVisible(true);
+        form.setTitle("Graphic Tracer");
+        form.setSize(960, 540);
+        form.setLocationRelativeTo(null);
+        form.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        form.setVisible(true);
+
+        JPanel p = new JPanel();
+        
+        
     }
-    
+
 }
