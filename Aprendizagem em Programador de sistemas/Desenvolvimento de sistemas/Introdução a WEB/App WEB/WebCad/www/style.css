@@ -1,0 +1,78 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+}
+h1,h2{
+    color: #333 ;
+}
+form{
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 10px;
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+label{
+    align-self: center;
+}
+
+input[type="email"],
+input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table,th,td{
+    border: 1px solid #ddd;
+}
+th,td{
+    padding: 8px;
+    text-align: left;
+}
+th{
+    background-color: rgb(214, 212, 212);
+}
+
+#addButton {
+    padding: 10px;
+    background-color: #0c1fc5;
+    color: #050505cb;
+    border: 2px #1950c54b solid;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: large;
+}
+#addButton:hover {
+    background-color: #1f30c9;
+    color: #000000;
+    border: 2px #0c1fc5 solid;
+}
+#addButton:active{
+    background-color: #0c1fc5;
+    color: #050505cb;
+    border: 2px #1950c54b solid;
+}
+#clearButton {
+    background-color: #c50a0a;
+    color: #000000;
+    border: 2px #c213138a solid;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: large;
+}
+#clearButton:hover {
+    background-color: #c213138a;
+    color: #000000;
+    border: 2px #c50a0a solid;
+}
+#clearButton:active {
+    background-color: #c50a0a;
+    color: #000000;
+    border: 2px #c213138a solid;
+}
