@@ -1,17 +1,18 @@
 body{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Times New Roman', Times, serif;
     margin: 20px;
     
 }
+
 main{
-    background-color: rgb(15, 124, 187);
+    background-color: cadetblue;
     border-radius: 7px;
     padding: 20px;
-    width: 30%;
+    width: 25%;
     display: flex;
     flex-direction: column;
     margin: auto;
-   align-items: center;
+    align-items: center;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.356);
 }
 header{
@@ -32,9 +33,7 @@ form{
     display: flex;
     flex-direction: column;
     gap: 10px;
-    
-
-    
+ 
 }
 input[type="text"],
 input[type="email"]{
@@ -46,9 +45,8 @@ input[type="email"]{
 
 .button{
     display: flex;
-    justify-content: space-around ;
-    width: 150%;
-    margin-left: -20%;
+    justify-content: space-between ;
+    width: 100%;
 }
 
 textarea{
@@ -67,6 +65,7 @@ textarea{
     font-size: large;
 }
 #addButton:hover {
+    transition: 0.3s;
     background-color: #1fc949;
     color: #000000;
     border: 2px #0cc51b solid;
@@ -85,6 +84,7 @@ textarea{
     font-size: large;
 }
 #clearButton:hover {
+    transition: 0.3s;
     background-color: #c213138a;
     color: #000000;
     border: 2px #c50a0a solid;
