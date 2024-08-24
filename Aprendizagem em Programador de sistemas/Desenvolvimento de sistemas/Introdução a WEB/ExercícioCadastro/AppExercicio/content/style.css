@@ -1,96 +1,92 @@
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 20px;
-    
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 20px;
 }
-main{
-    background-color: rgb(15, 124, 187);
-    border-radius: 7px;
-    padding: 20px;
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-   align-items: center;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.356);
+main {
+  background-color: rgb(15, 124, 187);
+  border-radius: 7px;
+  padding: 20px;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  align-items: center;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.356);
 }
-header{
-    color: #687777;
-    text-align: center;
+header {
+  color: #687777;
+  text-align: center;
 }
-footer{
-    text-align: center;
-    color: #687777;
-    font-style: italic;
-}
-
-h1{
-    text-align: center;
+footer {
+  text-align: center;
+  color: #687777;
+  font-style: italic;
 }
 
-form{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    
+h1 {
+  text-align: center;
+}
 
-    
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 input[type="text"],
-input[type="email"]{
-    padding: 5px;
-    border: #687777;
-    border-radius: 2px;
-    width: 100%;
+input[type="email"] {
+  padding: 5px;
+  border: #687777;
+  border-radius: 2px;
+  width: 100%;
 }
 
-.button{
-    display: flex;
-    justify-content: space-around ;
-    width: 150%;
-    margin-left: -20%;
+.button {
+  display: flex;
+  justify-content: space-around;
+  width: 150%;
+  margin-left: -20%;
 }
 
-textarea{
-    border: solid rgb(255, 255, 255);
-    border-radius: 5%;
-    width: 100%;
+textarea {
+  border: solid rgb(255, 255, 255);
+  border-radius: 5%;
+  width: 100%;
 }
 
 #addButton {
-    padding: 10px;
-    background-color: #0cc544;
-    color: #050505cb;
-    border: 2px #19c53e4b solid;
-    cursor: pointer;
-    border-radius: 3px;
-    font-size: large;
+  padding: 10px;
+  background-color: #0cc544;
+  color: #050505cb;
+  border: 2px #19c53e4b solid;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: large;
 }
 #addButton:hover {
-    background-color: #1fc949;
-    color: #000000;
-    border: 2px #0cc51b solid;
+  background-color: #1fc949;
+  color: #000000;
+  border: 2px #0cc51b solid;
 }
-#addButton:active{
-    background-color: #0cc52b;
-    color: #050505cb;
-    border: 2px #19c5224b solid;
+#addButton:active {
+  background-color: #0cc52b;
+  color: #050505cb;
+  border: 2px #19c5224b solid;
 }
 #clearButton {
-    background-color: #c50a0a;
-    color: #000000;
-    border: 2px #c213138a solid;
-    cursor: pointer;
-    border-radius: 3px;
-    font-size: large;
+  background-color: #c50a0a;
+  color: #000000;
+  border: 2px #c213138a solid;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: large;
 }
 #clearButton:hover {
-    background-color: #c213138a;
-    color: #000000;
-    border: 2px #c50a0a solid;
+  background-color: #c213138a;
+  color: #000000;
+  border: 2px #c50a0a solid;
 }
 #clearButton:active {
-    background-color: #c50a0a;
-    color: #000000;
-    border: 2px #c213138a solid;
+  background-color: #c50a0a;
+  color: #000000;
+  border: 2px #c213138a solid;
 }
