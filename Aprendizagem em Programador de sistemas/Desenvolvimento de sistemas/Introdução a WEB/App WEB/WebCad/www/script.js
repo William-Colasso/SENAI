@@ -1,35 +1,34 @@
-document.getElementById(`clearButton`).addEventListener(`click`, cleam);
-document.getElementById(`addButton`).addEventListener(`click`, send);
-var actualCell = 0;
+document.getElementById("clearButton").addEventListener("click", cleam);
+document.getElementById("addButton").addEventListener("click", send);
+const table = document.getElementById("table");
+const inputs = document.querySelectorAll(".forms");
 
 function cleam() {
-  const inputs = document.querySelectorAll(".forms");
-
   inputs.forEach((input) => {
     input.value = "";
   });
 }
+
 function send() {
-  const inputs = document.querySelectorAll(".forms");
-  continues = true;
-  inputs.forEach((input) => {
-    if (continues) {
-      if (input.value == "") {
-        alert("Existem parametros vazios!");
-        continues = false;
-        cleam();
-      } else {
-        const table = document.getElementById("table");
-        const newRow = document.createElement("tr");
+  let continues = true;
+  if (inputs.length > 0) {
+    var newRow = document.createElement("tr"); // Cria uma nova linha
 
-        for (let i = 0; i < 1; i++) {
-          var auxi = document.createElement("td");
-          auxi.innerText = String(input.value);
-          newRow.appendChild(auxi);
+    inputs.forEach((input) => {
+      if (continues) {
+        if (input.value == "") {
+          alert("Existem parâmetros vazios!");
+          continues = false;
+        } else {
+          var auxi = document.createElement("td"); // Cria uma nova célula
+          auxi.innerText = String(input.value); // Define o texto da célula como o valor do input
+          newRow.appendChild(auxi); // Adiciona a célula à linha
         }
-
-        table.appendChild(newRow);
       }
+    });
+    if (continues) {
+      table.appendChild(newRow); // Adiciona a nova linha à tabela se todos os inputs forem válidos
+      cleam();
     }
-  });
+  }
 }
