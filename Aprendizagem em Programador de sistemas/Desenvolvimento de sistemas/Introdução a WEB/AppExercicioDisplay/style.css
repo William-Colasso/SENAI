@@ -1,0 +1,79 @@
+.container {
+  display: flex;
+  height: 97vh;
+  gap: 10px;
+  width: 98vw;
+}
+.col {
+  color: rgb(0, 0, 0);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border: solid black 5px;
+  border-radius: 1%;
+  background-color: white;
+  padding: 10px;
+  gap: 10px;
+}
+
+.col1 .secao {
+  box-sizing: border-box;
+  border-radius: 5%;
+
+  padding: 10px;
+  height: calc(33% - 10px);
+}
+.col2 .secao {
+  box-sizing: border-box;
+  border-radius: 5%;
+
+  padding: 10px;
+  height: calc(50% - 10px);
+}
+.col3 .secao {
+  box-sizing: border-box;
+  border-radius: 5%;
+  border: solid white;
+  padding: 10px;
+  height: calc(50% - 10px);
+}
+.col .secao {
+  border: #000000 3px solid;
+  background-color: white;
+}
+.subContainer {
+  display: flex;
+  height: calc(50% - 10px);
+  gap: 10px;
+}
+.subsecao {
+  flex: 1;
+  border: 2px black solid;
+  border-radius: 5%;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 40px);
+  grid-template-rows: repeat(4, 40px);
+  gap: 15px;
+  box-sizing: border-box;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  padding-top: 10%;
+}
+.gridItem {
+  padding: 10px;
+  border: solid black 1px;
+  background-color: rgb(255, 255, 255);
+  
+  
+}
+.gridItem:hover {
+    
+    font-size: large;
+  
+  color: red;
+  border: solid rgb(247, 0, 0) 1px;
+}
