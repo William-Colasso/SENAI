@@ -62,6 +62,7 @@
   justify-items: center;
   justify-content: center;
   padding-top: 10%;
+  user-select: none;
 }
 .gridItem {
   padding: 10px;
