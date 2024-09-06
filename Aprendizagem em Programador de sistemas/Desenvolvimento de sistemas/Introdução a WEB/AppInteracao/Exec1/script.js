@@ -1,18 +1,11 @@
+var button = document.getElementById("add");
+button.addEventListener("click", () => {
+  var texto = document.getElementById("algo");
 
-var button = document.getElementById('add');
-button.addEventListener('click', ()=>{
-var texto = String(document.getElementById('algo').value);
-var areaTexto = document.getElementById('areaTexto');
+  var areaTexto = document.getElementById("areaTexto");
 
-
-auxi = (String(areaTexto.value)+texto)+"\n";
-
-
-areaTexto.innerHTML = auxi ;
-
-
-    
-
-
-})
-
+  if (texto != "") {
+    areaTexto.innerHTML = String(areaTexto.value) + String(texto.value) + "\n";
+    texto.value = "";
+  } else alert("Por favor, digite algo");
+});

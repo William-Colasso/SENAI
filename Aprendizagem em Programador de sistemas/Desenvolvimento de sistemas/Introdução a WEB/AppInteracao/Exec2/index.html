@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo de Interação com HTML, CSS e JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+
+        <h2>Exemplo de Interação com formulário</h2>
+
+        <div class="checkbox-group">
+            <label >Escolha seu navegador favorito:</label>
+            <div class="auxi">
+                <label  ><input type="checkbox"  value="opera" id="opera" checked>Opera</label>
+                <label  ><input type="checkbox"  value="chrome" id="chrome">Google</label>
+                <label  ><input type="checkbox"  value="firefox" id="firefox">Mozilla Firefox</labe>
+            </div>
+
+
+        </div>
+
+
+        <div class="radio-group">
+            <h2>Seu nível de experiência:</h2>
+            <div class="auxi">
+                <label><input type="radio" name="experience" id="basico">Basico</label>
+                <label><input type="radio" name="experience" id="medio">Médio</label>
+                <label><input type="radio" name="experience" id="avancado">Avançado</label>
+            </div>
+
+
+
+        </div>
+
+        <div class="select-group">
+            <label for="country">Selecione seu país:</label>
+            <select  id="country">
+                <option value="">--Selecione--</option>
+                <option value="Brasil">Brasil</option>
+                <option value="Portugal">Portugal</option>
+                <option value="Estados Unidos">Estados Unidos</option>
+                <option value="Canada">Canadá</option>
+
+
+
+            </select>
+
+        </div>
+        
+        <button onclick="exibirSelecionados()">Mostrar Seleções</button>
+
+        <div class="output" id="output">
+            <!-- Resultados aparecerão aqui -->
+        </div>
+
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,121 @@
+body{
+    font-family: Arial, sans-serif;
+    background-color: #F4F4F4;
+    margin: 0;
+    padding: 20px;
+}
+
+.container{
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 5px;
+}
+
+h2{
+    text-align: center;
+    color: #333;
+}
+
+label{
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+input[type="text"],
+textarea{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.checkbox-group,
+.radio-group,
+.select-group{
+    margin-bottom: 20px;
+    
+}
+
+.output{
+    margin-top: 20px;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #DDD;
+    border-radius: 4px;
+    min-height: 50px;
+}
+
+
+button{
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    
+}
+
+.auxi{
+    display: flex;
+    flex-direction: row;
+}
+
+label input[type="radio"]{
+    
+    appearance:  none;
+    padding: 4px;
+    border: 1px solid gray;
+    border-radius:100% ;
+    background-color: #fdfeff;
+    color: black;
+}
+label input[type="radio"]:checked{
+    
+    padding: 4px;
+    border: 1px solid gray;
+    background-color: #046fe9;
+    color: black;
+}
+label input[type="radio"]:hover:not(:checked){
+    
+    padding: 4px;
+    border: 1px solid gray;
+    background-color: #7eb2ee;
+    color: black;
+}
+
+label input[type="checkbox"]{
+    appearance:  none;
+    padding: 4px;
+    border: 1px solid gray;
+    border-radius:100% ;
+    background-color: #fdfeff;
+    color: black;
+}
+label input[type="checkbox"]:checked{
+    
+    padding: 4px;
+    border: 1px solid gray;
+    background-color: #046fe9;
+    color: black;
+}
+label input[type="checkbox"]:hover:not(:checked){
+    
+    padding: 4px;
+    border: 1px solid gray;
+    background-color: #7eb2ee;
+    color: black;
+}
+
+button:hover{
+    background-color: #0056b3;
+}
