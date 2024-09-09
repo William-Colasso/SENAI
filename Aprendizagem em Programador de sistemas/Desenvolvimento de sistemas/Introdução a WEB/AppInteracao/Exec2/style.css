@@ -97,7 +97,7 @@ label input[type="checkbox"]{
     appearance:  none;
     padding: 4px;
     border: 1px solid gray;
-    border-radius:100% ;
+    border-radius:10% ;
     background-color: #fdfeff;
     color: black;
 }
