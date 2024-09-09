@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frontend - parte A</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <main>
+        <h2>Atividade de Interação de texto</h2>
+
+        <div class="inputContainer">
+            <label for="inputText">Caixa de texto:</label>
+            <input type="text" id="inputText" placeholder="Este é um texto de entrada"></input>
+
+
+            <label for="textArea">Textarea:</label>
+            <textarea rows="7"  id="textArea"></textarea>
+        
+
+
+        
+            <div class="checkboxes">
+                <label class="border-label">Checkboxes</label>
+                <label for="checkbox1"><input type="checkbox" name="checkbox" value="checkbox 1" id="checkbox1">Checkbox 1</input></label>
+                <label for="checkbox2"><input type="checkbox" name="checkbox" value="checkbox 2" id="checkbox2">Checkbox 2</input></label>
+                <label for="checkbox3"><input type="checkbox" name="checkbox" value="checkbox 3" id="checkbox3">Checkbox 3</input></label>
+            </div>
+
+            <div class="radiosCheck">
+                <label class="border-label">Radio Buttons</label>
+                <label for="radio1"><input type="radio" name="radios" value="Radio 1" id="radio1"></input>Radio 1</label>
+                <label for="radio2"><input type="radio" name="radios" value="Radio 2" id="radio2"></input>Radio 2</label>
+                <label for="radio3"><input type="radio" name="radios" value="Radio 3" id="radio3"></input>Radio 3</label>
+            </div>
+
+            <button class="send" id="sendData">Enviar</button>
+        </div>
+        
+        <h2>Adicionar linha à tabela</h2>
+        <div class="inputContainer"> 
+            <div class="inputInfos">
+
+                <label for="nome">Nome:</label>
+                <input type="text" name="info" id="nome" placeholder="Nome">
+
+                <label for="idade">Idade:</label>
+                <input type="text" name="info" id="idade" placeholder="Idade">
+
+                <label for="email">Email:</label>
+                <input type="email" name="info" id="email" placeholder="Email">
+            </div>
+            <button class="send" id="addTable">Adicionar Linha</button>
+
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                <th class="nomes">Nome</th>
+                <th class="idades">Idade</th>
+                <th class="emails">Email</th>
+                </tr>
+                
+            </thead>
+            <tbody>
+                <tr>
+                    <td>João</td>
+                    <td>30</td>
+                    <td>joao@example.com</td>
+                </tr>
+                <tr>
+
+                </tr>
+                    <td>Maria</td>
+                    <td>25</td>
+                    <td>maria@example.com</td>
+                </tr>
+                <tr>
+                    <td>Pedro</td>
+                    <td>35</td>
+                    <td>pedro@example.com</td>
+                </tr>
+            </tbody>
+
+        </table>
+
+        <div class="inputContainer">
+
+        <div class="results">
+
+            <input disabled  id="textInputResult"></input>
+            <div   id="textAreaResult"></div>
+            <input disabled  id="checkBoxResult"></input>
+            <input disabled  id="radioResult"></input>
+        </div>
+    </div>
+    </main>
+  </body>
+  <script src="script.js"></script>
+</html>
