@@ -164,7 +164,6 @@ label input[type="radio"]:checked {
   color: black;
 }
 label input[type="radio"]:hover:not(:checked) {
-  transition: 1s;
   border: 1px solid gray;
   background-color: #7eb2ee;
   color: black;
