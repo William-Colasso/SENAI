@@ -55,6 +55,7 @@ input[type="text"] {
   padding: 10px;
 }
 
+
 .border-label {
   position: absolute;
   top: -10px; /* Adjust based on your border width and label size */
@@ -151,18 +152,39 @@ th {
 }
 label input[type="radio"] {
   appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   padding: 8px;
   border: 1px solid gray;
   border-radius: 100%;
   background-color: #fdfeff;
   color: black;
+  position: relative; /* Necessário para o ::after funcionar */
 }
+
+label input[type="radio"]:checked::after {
+  content: "\2714"; /* O símbolo de checkmark (✓) */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff; /* Define a cor do símbolo */
+  font-size: 16px; /* Define o tamanho do símbolo */
+}
+
 label input[type="radio"]:checked {
-  border: 1px solid gray;
   transition: 0.3s;
+  border: 1px solid gray;
   background-color: #046fe9;
   color: black;
 }
+label input[type="radio"]:not(:checked) {
+  transition: 0.3s;
+  border: 1px solid gray;
+  background-color: #ffffff;
+  color: black;
+}
+
 label input[type="radio"]:hover:not(:checked) {
   border: 1px solid gray;
   background-color: #7eb2ee;
@@ -171,21 +193,42 @@ label input[type="radio"]:hover:not(:checked) {
 
 label input[type="checkbox"] {
   appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   padding: 8px;
   border: 1px solid gray;
   border-radius: 10%;
   background-color: #fdfeff;
   color: black;
+  position: relative; /* Necessário para o ::after funcionar */
 }
+
+label input[type="checkbox"]:checked::after {
+  content: "\2714"; /* O símbolo de checkmark (✓) */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff; /* Define a cor do símbolo */
+  font-size: 16px; /* Define o tamanho do símbolo */
+}
+
 label input[type="checkbox"]:checked {
   transition: 0.3s;
   border: 1px solid gray;
   background-color: #046fe9;
   color: black;
 }
+
 label input[type="checkbox"]:hover:not(:checked) {
   border: 1px solid gray;
   background-color: #7eb2ee;
+  color: black;
+}
+label input[type="checkbox"]:not(:checked) {
+  transition: 0.3s;
+  border: 1px solid gray;
+  background-color: #ffffff;
   color: black;
 }
 
