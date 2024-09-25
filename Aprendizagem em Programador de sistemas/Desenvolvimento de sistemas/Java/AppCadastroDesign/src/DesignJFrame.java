@@ -188,7 +188,7 @@ public class DesignJFrame extends javax.swing.JFrame {
     }
 
     public static void loadFor() {
-        String fileFor = "cliente.db";
+        String fileFor = "fornecedor.db";
         String conteudo = Arquivo.read(fileFor);
         if (conteudo.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Erro de leitura do arquivo.");
@@ -213,7 +213,17 @@ public class DesignJFrame extends javax.swing.JFrame {
     }
 
     public DesignJFrame() {
+        listaCliente = new ArrayList<>();
+        listaProduto = new ArrayList<>();
+        listaFornecedor = new ArrayList<>();
+        loadCli();
+        loadPro();
+        loadFor();
         initComponents();
+        tblCliente();
+        tblProduto();
+        tblFornecedor();
+
     }
 
     /**
@@ -254,7 +264,7 @@ public class DesignJFrame extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTEndCli = new javax.swing.JTextArea();
+        jTaEndCli = new javax.swing.JTextArea();
         btnExcCli = new javax.swing.JButton();
         btnEditCli = new javax.swing.JButton();
         btnNewCli = new javax.swing.JButton();
@@ -460,6 +470,11 @@ public class DesignJFrame extends javax.swing.JFrame {
         });
 
         btnSaveCli.setText("Salvar");
+        btnSaveCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveCliActionPerformed(evt);
+            }
+        });
 
         btnCanCli.setText("Cancelar");
 
@@ -472,9 +487,9 @@ public class DesignJFrame extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Endereço:");
 
-        jTEndCli.setColumns(20);
-        jTEndCli.setRows(5);
-        jScrollPane4.setViewportView(jTEndCli);
+        jTaEndCli.setColumns(20);
+        jTaEndCli.setRows(5);
+        jScrollPane4.setViewportView(jTaEndCli);
 
         btnExcCli.setText("Excluir");
 
@@ -636,6 +651,11 @@ public class DesignJFrame extends javax.swing.JFrame {
         jLabel17.setText("Unidade:");
 
         btnSavePro.setText("Salvar");
+        btnSavePro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveProActionPerformed(evt);
+            }
+        });
 
         btnCanPro.setText("Cancelar");
 
@@ -876,6 +896,11 @@ public class DesignJFrame extends javax.swing.JFrame {
         btnCanFor.setText("Cancelar");
 
         btnSaveFor.setText("Salvar");
+        btnSaveFor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveForActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -1067,6 +1092,100 @@ public class DesignJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEditForActionPerformed
 
+    private void btnSaveCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveCliActionPerformed
+        int cod = Integer.parseInt(jTfCodCli.getText());
+        String nome = jTfNomeCli.getText();
+        String telefone = jTfFoneCli.getText();
+        String email = jTfEmailCli.getText();
+        String endereco = jTaEndCli.getText();
+
+        int a = JOptionPane.showConfirmDialog(null, "Deseja Realmente salvar essas informações?\n\n"
+                + "Código: `" + cod
+                + "\nNome: " + nome
+                + "\nTelefone: " + telefone
+                + "\nEmail: " + email
+                + "\nEndereço: " + endereco,
+                "Confirmar", JOptionPane.YES_OPTION);
+
+        if (a == JOptionPane.YES_OPTION) {
+            Cliente cliente = new Cliente(nome, telefone);
+            cliente.setCodigo(cod);
+            cliente.setFone(telefone);
+            cliente.setEmail(email);
+            cliente.setEndereco(endereco);
+
+            listaCliente.add(cliente);
+            tblCliente();
+            saveCli();
+        } else if (a == JOptionPane.NO_OPTION) {
+
+        }
+    }//GEN-LAST:event_btnSaveCliActionPerformed
+
+    private void btnSaveProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveProActionPerformed
+        int cod = Integer.parseInt(jTfCodPro.getText());
+        String descricao = jTfDesPro.getText();
+        String unidade = jTfUniPro.getText();
+        float quantidade = Float.parseFloat(jTfQtdPro.getText());
+        float preco = Float.parseFloat(jTfPrePro.getText());
+
+        int a = JOptionPane.showConfirmDialog(null, "Deseja Realmente salvar essas informações?\n\n"
+                + "Código: `" + cod
+                + "\nDescrição " + descricao
+                + "\nUnidade:: " + unidade
+                + "\nQuantidade: " + quantidade
+                + "\nPreço: R$" + preco,
+                "Confirmar", JOptionPane.YES_OPTION);
+
+        if (a == JOptionPane.YES_OPTION) {
+            Produto produto = new Produto(cod, descricao, unidade, quantidade, preco);
+            produto.setCod(cod);
+            produto.setDesc(descricao);
+            produto.setUnidade(unidade);
+            produto.setQtd(quantidade);
+            produto.setPreco(preco);
+
+            listaProduto.add(produto);
+            tblProduto();
+            savePro();
+        } else if (a == JOptionPane.NO_OPTION) {
+
+        }
+
+    }//GEN-LAST:event_btnSaveProActionPerformed
+
+    private void btnSaveForActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveForActionPerformed
+        int cod = Integer.parseInt(jTfCodFor.getText());
+        String empresa = jTfEmpFor.getText();
+        String contato = jTfContFor.getText();
+        String fone = jTfFoneFor.getText();
+        String email = jTfEmailFor.getText();
+
+        int a = JOptionPane.showConfirmDialog(null, "Deseja realmente salvar essas informações?\n\n"
+                + "Código: " + cod
+                + "\nEmpresa: " + empresa
+                + "\nContato: " + contato
+                + "\nFone: " + fone
+                + "\nEmail: " + email,
+                "Confirmar", JOptionPane.YES_OPTION);
+
+        if (a == JOptionPane.YES_OPTION) {
+            Fornecedor fornecedor = new Fornecedor(cod, empresa, contato, fone, email);
+            fornecedor.setCod(cod);
+            fornecedor.setEmpresa(empresa);
+            fornecedor.setContato(contato);
+            fornecedor.setFone(fone);
+            fornecedor.setEmail(email);
+
+            listaFornecedor.add(fornecedor);
+            tblFornecedor();  
+            saveFor();  
+        } else if (a == JOptionPane.NO_OPTION) {
+            
+        }
+
+    }//GEN-LAST:event_btnSaveForActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1150,7 +1269,7 @@ public class DesignJFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextArea jTEndCli;
+    private javax.swing.JTextArea jTaEndCli;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTbCli;
