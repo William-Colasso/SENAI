@@ -1,6 +1,7 @@
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.plaf.OptionPaneUI;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -135,7 +136,7 @@ public class DesignJFrame extends javax.swing.JFrame {
                     + listaFornecedor.get(i).getEmail() + "\n";
         }
         if (Arquivo.write(fileFor, linhaFor)) {
-            JOptionPane.showMessageDialog(null, "Arquivo gravado com sucesso");
+            JOptionPane.showMessageDialog(null, "Arquivo alterado com sucesso");
         } else {
             JOptionPane.showMessageDialog(null, "Erro na gravação do arquivo");
         }
@@ -223,6 +224,9 @@ public class DesignJFrame extends javax.swing.JFrame {
         tblCliente();
         tblProduto();
         tblFornecedor();
+        enableButtons(false);
+        btnNewCli.setEnabled(true);
+        enableInputs(false);
 
     }
 
@@ -415,6 +419,8 @@ public class DesignJFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SCCPF-SISTEMA DE CADASTRO CLIENTE -PRODUTO-FORNECEDOR");
 
+        jTabbedPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jTbCli.setModel(new javax.swing.table.DefaultTableModel(
@@ -447,6 +453,11 @@ public class DesignJFrame extends javax.swing.JFrame {
                 "Código", "Nome", "Telefone", "Email", "Endereço"
             }
         ));
+        jTbCli.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTbCliMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTbCli);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -477,6 +488,11 @@ public class DesignJFrame extends javax.swing.JFrame {
         });
 
         btnCanCli.setText("Cancelar");
+        btnCanCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCanCliActionPerformed(evt);
+            }
+        });
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel13.setText("Email:");
@@ -492,10 +508,25 @@ public class DesignJFrame extends javax.swing.JFrame {
         jScrollPane4.setViewportView(jTaEndCli);
 
         btnExcCli.setText("Excluir");
+        btnExcCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcCliActionPerformed(evt);
+            }
+        });
 
         btnEditCli.setText("Editar");
+        btnEditCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditCliActionPerformed(evt);
+            }
+        });
 
         btnNewCli.setText("Novo");
+        btnNewCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewCliActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -574,7 +605,7 @@ public class DesignJFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -658,8 +689,18 @@ public class DesignJFrame extends javax.swing.JFrame {
         });
 
         btnCanPro.setText("Cancelar");
+        btnCanPro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCanProActionPerformed(evt);
+            }
+        });
 
         btnExcPro.setText("Excluir");
+        btnExcPro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcProActionPerformed(evt);
+            }
+        });
 
         btnEditPro.setText("Editar");
         btnEditPro.addActionListener(new java.awt.event.ActionListener() {
@@ -669,6 +710,11 @@ public class DesignJFrame extends javax.swing.JFrame {
         });
 
         btnNewPro.setText("Novo");
+        btnNewPro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewProActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -740,7 +786,7 @@ public class DesignJFrame extends javax.swing.JFrame {
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(jTfDesPro, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         jTbPro.setModel(new javax.swing.table.DefaultTableModel(
@@ -773,6 +819,11 @@ public class DesignJFrame extends javax.swing.JFrame {
                 "Código", "Descrição", "Unidade", "Quantidade", "Preço"
             }
         ));
+        jTbPro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTbProMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTbPro);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -803,6 +854,7 @@ public class DesignJFrame extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        jTbFor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jTbFor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -833,6 +885,11 @@ public class DesignJFrame extends javax.swing.JFrame {
                 "Código", "Nome", "Contato", "Telefone", "Email"
             }
         ));
+        jTbFor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTbForMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTbFor);
 
         jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -920,7 +977,7 @@ public class DesignJFrame extends javax.swing.JFrame {
                         .addComponent(jLabel22)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTfContFor, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 11, Short.MAX_VALUE))
+                        .addGap(0, 5, Short.MAX_VALUE))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addComponent(jTfFoneFor, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -970,7 +1027,7 @@ public class DesignJFrame extends javax.swing.JFrame {
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel20)
                             .addComponent(jTfEmpFor, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -1019,6 +1076,70 @@ public class DesignJFrame extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    public void enableButtons(boolean choose) {
+        btnNewCli.setEnabled(choose);
+        btnCanCli.setEnabled(choose);
+        btnEditCli.setEnabled(choose);
+        btnExcCli.setEnabled(choose);
+        btnSaveCli.setEnabled(choose);
+
+        btnNewPro.setEnabled(choose);
+        btnCanPro.setEnabled(choose);
+        btnEditPro.setEnabled(choose);
+        btnExcPro.setEnabled(choose);
+        btnSavePro.setEnabled(choose);
+
+        btnNewFor.setEnabled(choose);
+        btnCanFor.setEnabled(choose);
+        btnEditFor.setEnabled(choose);
+        btnExcFor.setEnabled(choose);
+        btnSaveFor.setEnabled(choose);
+    }
+
+    public void enableInputs(boolean choose) {
+        jTfCodCli.setEnabled(choose);
+        jTfCodFor.setEnabled(choose);
+        jTfNomeCli.setEnabled(choose);
+        jTfFoneCli.setEnabled(choose);
+        jTfEmailCli.setEnabled(choose);
+        jTaEndCli.setEnabled(choose);
+
+        jTfCodFor.setEnabled(choose);
+        jTfEmpFor.setEnabled(choose);
+        jTfContFor.setEnabled(choose);
+        jTfFoneFor.setEnabled(choose);
+        jTfEmailFor.setEnabled(choose);
+
+        jTfCodPro.setEnabled(choose);
+        jTfDesPro.setEnabled(choose);
+        jTfUniPro.setEnabled(choose);
+        jTfQtdPro.setEnabled(choose);
+        jTfPrePro.setEnabled(choose);
+
+        if (!choose) {
+            jTfCodCli.setText("");
+            jTfNomeCli.setText("");
+            jTfFoneCli.setText("");
+            jTfEmailCli.setText("");
+            jTaEndCli.setText("");  // Para o campo de texto de endereço, supondo que seja uma JTextArea
+
+            jTfCodPro.setText("");
+            jTfDesPro.setText("");
+            jTfUniPro.setText("");
+            jTfQtdPro.setText("");
+            jTfPrePro.setText("");
+
+            jTfCodFor.setText("");
+            jTfEmpFor.setText("");
+            jTfContFor.setText("");
+            jTfFoneFor.setText("");
+            jTfEmailFor.setText("");
+
+        }
+
+    }
+
 
     private void jTfFoneCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTfFoneCliActionPerformed
         // TODO add your handling code here:
@@ -1176,19 +1297,116 @@ public class DesignJFrame extends javax.swing.JFrame {
             fornecedor.setContato(contato);
             fornecedor.setFone(fone);
             fornecedor.setEmail(email);
-
-            listaFornecedor.add(fornecedor);
-            tblFornecedor();  
-            saveFor();  
-        } else if (a == JOptionPane.NO_OPTION) {
             
+            listaFornecedor.add(fornecedor);
+            tblFornecedor();
+            saveFor();
+        } else if (a == JOptionPane.NO_OPTION) {
+
         }
 
     }//GEN-LAST:event_btnSaveForActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void jTbForMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTbForMouseClicked
+        int linhaSelecionada = jTbFor.getSelectedRow();
+        jTfCodFor.setText(jTbFor.getValueAt(linhaSelecionada, 0).toString());
+        jTfEmpFor.setText(jTbFor.getValueAt(linhaSelecionada, 1).toString());
+        jTfContFor.setText(jTbFor.getValueAt(linhaSelecionada, 2).toString());
+        jTfFoneFor.setText(jTbFor.getValueAt(linhaSelecionada, 3).toString());
+        jTfEmailFor.setText(jTbFor.getValueAt(linhaSelecionada, 4).toString());
+
+    }//GEN-LAST:event_jTbForMouseClicked
+
+    private void jTbCliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTbCliMouseClicked
+        btnExcCli.setEnabled(true);
+        btnCanCli.setEnabled(true);
+        btnNewCli.setEnabled(false);
+        btnSaveCli.setEnabled(false);
+        btnEditCli.setEnabled(true);
+        enableInputs(false);
+
+        int linhaSelecionada = jTbCli.getSelectedRow();
+        jTfCodCli.setText(jTbCli.getValueAt(linhaSelecionada, 0).toString());
+        jTfNomeCli.setText(jTbCli.getValueAt(linhaSelecionada, 1).toString());
+        jTfFoneCli.setText(jTbCli.getValueAt(linhaSelecionada, 2).toString());
+        jTfEmailCli.setText(jTbCli.getValueAt(linhaSelecionada, 3).toString());
+        jTaEndCli.setText(jTbCli.getValueAt(linhaSelecionada, 4).toString());
+
+    }//GEN-LAST:event_jTbCliMouseClicked
+
+    private void jTbProMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTbProMouseClicked
+        int linhaSelecionada = jTbPro.getSelectedRow();
+        jTfCodPro.setText(jTbPro.getValueAt(linhaSelecionada, 0).toString());
+        jTfDesPro.setText(jTbPro.getValueAt(linhaSelecionada, 1).toString());
+        jTfUniPro.setText(jTbPro.getValueAt(linhaSelecionada, 2).toString());
+        jTfQtdPro.setText(jTbPro.getValueAt(linhaSelecionada, 3).toString());
+        jTfPrePro.setText(jTbPro.getValueAt(linhaSelecionada, 4).toString());
+
+    }//GEN-LAST:event_jTbProMouseClicked
+
+    private void btnExcCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcCliActionPerformed
+
+        int linhaSelecionada = jTbCli.getSelectedRow();
+
+        int a = JOptionPane.showConfirmDialog(null, "Realmente deseja excluir?", "Confirmar", JOptionPane.YES_OPTION);
+
+        if (a == JOptionPane.YES_OPTION) {
+            listaCliente.remove(linhaSelecionada);
+            saveCli();
+            tblCliente();
+            enableButtons(false);
+            btnNewCli.setEnabled(true);
+            enableInputs(false);
+        }
+    }//GEN-LAST:event_btnExcCliActionPerformed
+
+
+    private void btnEditCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditCliActionPerformed
+        enableButtons(false);
+        btnSaveCli.setEnabled(true);
+        btnCanCli.setEnabled(true);
+        enableInputs(true);
+        
+
+    }//GEN-LAST:event_btnEditCliActionPerformed
+
+    private void btnNewCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewCliActionPerformed
+        btnSaveCli.setEnabled(true);
+        btnNewCli.setEnabled(false);
+        btnCanCli.setEnabled(true);
+        enableInputs(true);
+    }//GEN-LAST:event_btnNewCliActionPerformed
+
+    private void btnCanCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCanCliActionPerformed
+        enableButtons(false);
+        btnNewCli.setEnabled(true);
+        enableInputs(false);
+    }//GEN-LAST:event_btnCanCliActionPerformed
+
+    private void btnNewProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewProActionPerformed
+        btnSavePro.setEnabled(true);
+        btnNewPro.setEnabled(false);
+        btnCanPro.setEnabled(true);
+        enableInputs(true);
+    }//GEN-LAST:event_btnNewProActionPerformed
+
+    private void btnCanProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCanProActionPerformed
+        enableButtons(false);
+        btnNewPro.setEnabled(true);
+        enableInputs(false);
+    }//GEN-LAST:event_btnCanProActionPerformed
+
+    private void btnExcProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcProActionPerformed
+        int linhaSelecionada = jTbPro.getSelectedRow();
+
+        listaProduto.remove(linhaSelecionada);
+        saveCli();
+        tblCliente();
+        enableButtons(false);
+        btnNewPro.setEnabled(true);
+        enableInputs(false);
+    }//GEN-LAST:event_btnExcProActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1217,8 +1435,10 @@ public class DesignJFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new DesignJFrame().setVisible(true);
+
             }
         });
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
