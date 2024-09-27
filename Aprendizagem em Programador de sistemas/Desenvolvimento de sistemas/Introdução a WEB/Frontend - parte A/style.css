@@ -1,0 +1,242 @@
+body {
+  display: flex;
+  justify-content: center;
+  user-select: none;
+  font-size: large;
+}
+
+main {
+  border: 1px #cfcfcf solid;
+  border-radius: 10px;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.1);
+  align-items: center;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  gap: 20px;
+  border-radius: 10px;
+}
+textarea,
+input[type="text"] {
+  border: solid 1px #cfcfcf;
+  border-radius: 5px;
+}
+
+.checkboxes {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: flex-start;
+  gap: 10px;
+
+  border: solid 2px #cfcfcf;
+  border-radius: 5px;
+  width: 97.5%;
+  position: relative;
+  padding: 10px;
+}
+
+.radiosCheck {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-self: flex-start;
+
+  border: solid 2px #cfcfcf;
+  width: 97.5%;
+  border-radius: 5px;
+  position: relative;
+  padding: 10px;
+}
+
+
+.border-label {
+  position: absolute;
+  top: -10px; /* Adjust based on your border width and label size */
+  left: 10px; /* Adjust based on where you want the label horizontally */
+  background: rgba(
+    255,
+    255,
+    255,
+    0.788
+  ); /* Ensure the label overlaps the border cleanly */
+
+  font-size: 14px;
+}
+
+.send {
+  padding: 15px;
+  background-color: #005cc8;
+  border: 2px solid white;
+  color: white;
+  border-radius: 7px;
+
+  align-self: flex-start;
+}
+
+.send:hover {
+  background-color: #0569db;
+  cursor: pointer;
+}
+
+.send:focus {
+  transition: 1s;
+  background-color: #ffffff;
+  color: #005cc8;
+  border: #005cc8 2px solid;
+}
+.send:not(:focus) {
+  transition: 1s;
+  background-color: #005cc8;
+  border: 2px solid white;
+}
+
+.inputInfos {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 90%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+table,
+th,
+td {
+  border: 1px solid #cfcfcf;
+}
+th,
+td {
+  padding: 8px;
+  text-align: left;
+}
+th {
+  background-color: #f4f4f4;
+}
+
+.nomes {
+  width: 33vw;
+}
+.idades {
+  width: 33vw;
+}
+.emails {
+  width: 66vw;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  gap: 10px;
+  width: 100%;
+}
+.results input {
+  padding: 5px;
+  background-color: #d9dbdd;
+  color: black;
+  border: none;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+label input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 8px;
+  border: 1px solid gray;
+  border-radius: 100%;
+  background-color: #fdfeff;
+  color: black;
+  position: relative; /* Necessário para o ::after funcionar */
+}
+
+label input[type="radio"]:checked::after {
+  content: "\2714"; /* O símbolo de checkmark (✓) */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff; /* Define a cor do símbolo */
+  font-size: 16px; /* Define o tamanho do símbolo */
+}
+
+label input[type="radio"]:checked {
+  transition: 0.3s;
+  border: 1px solid gray;
+  background-color: #046fe9;
+  color: black;
+}
+label input[type="radio"]:not(:checked) {
+  transition: 0.3s;
+  border: 1px solid gray;
+  background-color: #ffffff;
+  color: black;
+}
+
+label input[type="radio"]:hover:not(:checked) {
+  border: 1px solid gray;
+  background-color: #7eb2ee;
+  color: black;
+}
+
+label input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 8px;
+  border: 1px solid gray;
+  border-radius: 10%;
+  background-color: #fdfeff;
+  color: black;
+  position: relative; /* Necessário para o ::after funcionar */
+}
+
+label input[type="checkbox"]:checked::after {
+  content: "\2714"; /* O símbolo de checkmark (✓) */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff; /* Define a cor do símbolo */
+  font-size: 16px; /* Define o tamanho do símbolo */
+}
+
+label input[type="checkbox"]:checked {
+  transition: 0.3s;
+  border: 1px solid gray;
+  background-color: #046fe9;
+  color: black;
+}
+
+label input[type="checkbox"]:hover:not(:checked) {
+  border: 1px solid gray;
+  background-color: #7eb2ee;
+  color: black;
+}
+label input[type="checkbox"]:not(:checked) {
+  transition: 0.3s;
+  border: 1px solid gray;
+  background-color: #ffffff;
+  color: black;
+}
+
+#textAreaResult {
+  min-height: 25px;
+  word-break: break-word;
+  white-space: pre-wrap;
+  background-color: #cfcfcf;
+  color: black;
+  box-sizing: border-box;
+}
