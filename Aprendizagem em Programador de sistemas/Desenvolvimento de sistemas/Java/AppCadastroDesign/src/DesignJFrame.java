@@ -1375,7 +1375,7 @@ public class DesignJFrame extends javax.swing.JFrame {
             fornecedor.setEmail(email);
 
             if (isEditing) {
-                int linhaSelecionada = jTbPro.getSelectedRow();
+                int linhaSelecionada = jTbFor.getSelectedRow();
                 listaFornecedor.remove(linhaSelecionada);
                 listaFornecedor.add(linhaSelecionada, fornecedor);
                 isEditing = false;
@@ -1425,17 +1425,20 @@ public class DesignJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jTbCliMouseClicked
 
     private void jTbProMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTbProMouseClicked
+        
+        enableButtons(false);
+        btnExcPro.setEnabled(true);
+        btnCanPro.setEnabled(true);
+        btnEditPro.setEnabled(true);
+        enableInputs(false);
+        
         int linhaSelecionada = jTbPro.getSelectedRow();
         jTfCodPro.setText(jTbPro.getValueAt(linhaSelecionada, 0).toString());
         jTfDesPro.setText(jTbPro.getValueAt(linhaSelecionada, 1).toString());
         jTfUniPro.setText(jTbPro.getValueAt(linhaSelecionada, 2).toString());
         jTfQtdPro.setText(jTbPro.getValueAt(linhaSelecionada, 3).toString());
         jTfPrePro.setText(jTbPro.getValueAt(linhaSelecionada, 4).toString());
-        enableButtons(false);
-        btnExcPro.setEnabled(true);
-        btnCanPro.setEnabled(true);
-        btnEditPro.setEnabled(true);
-        enableInputs(false);
+        
     }//GEN-LAST:event_jTbProMouseClicked
 
     private void btnExcCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcCliActionPerformed
@@ -1539,6 +1542,7 @@ public class DesignJFrame extends javax.swing.JFrame {
         enableInputs(true);
         btnCanFor.setEnabled(true);
         btnSaveFor.setEnabled(true);
+        isEditing = false;
     }//GEN-LAST:event_btnNewForActionPerformed
 
     private void btnCanForActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCanForActionPerformed
