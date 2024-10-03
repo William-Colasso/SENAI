@@ -1,14 +1,6 @@
 package model;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 
-/**
- *
- * @author william_c_pereira
- */
 public class Cliente {
 
     private int codigo;
@@ -23,12 +15,24 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(String nome, String fone) {
-
+    public Cliente(String nome, String fone, String email, String endereco) {
         this.nome = nome;
         this.fone = fone;
-
+        this.email = email;
+        this.endereco = endereco;
     }
+
+    
+
+    public Cliente(int codigo, String nome, String fone, String email, String endereco) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.fone = fone;
+        this.email = email;
+        this.endereco = endereco;
+    }
+    
+    
     
     //Getters
 

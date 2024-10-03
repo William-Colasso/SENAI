@@ -3,7 +3,7 @@ package model;
 
 public class Fornecedor {
 
-    private int cod;
+    private int codigo;
     private String empresa;
     private String contato;
     private String fone;
@@ -12,8 +12,15 @@ public class Fornecedor {
     public Fornecedor() {
     }
 
-    public Fornecedor(int cod, String empresa, String contato, String fone, String email) {
-        this.cod = cod;
+    public Fornecedor(int codigo, String empresa, String contato, String fone, String email) {
+        this.codigo = codigo;
+        this.empresa = empresa;
+        this.contato = contato;
+        this.fone = fone;
+        this.email = email;
+    }
+    
+    public Fornecedor(String empresa, String contato, String fone, String email) {
         this.empresa = empresa;
         this.contato = contato;
         this.fone = fone;
@@ -23,7 +30,7 @@ public class Fornecedor {
     //Getters
 
     public int getCod() {
-        return cod;
+        return codigo;
     }
 
     public String getEmpresa() {
@@ -45,8 +52,8 @@ public class Fornecedor {
     
     //Setters
 
-    public void setCod(int cod) {
-        this.cod = cod;
+    public void setCod(int codigo) {
+        this.codigo = codigo;
     }
 
     public void setEmpresa(String empresa) {

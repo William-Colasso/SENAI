@@ -1,13 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
+
 package dao;
 
-/**
- *
- * @author william_c_pereira
- */
+import model.Fornecedor;
+import java.util.*;
+
 public interface FornecedorDao {
-    
+  void addFornecedor(Fornecedor fornecedor);  
+  Fornecedor getFornecedor(int codigo);
+  List<Fornecedor> getAllFornecedores();
+  void updateFornecedor (Fornecedor fornecedor);
+  void deleteFornecedor(int codigo);
 }

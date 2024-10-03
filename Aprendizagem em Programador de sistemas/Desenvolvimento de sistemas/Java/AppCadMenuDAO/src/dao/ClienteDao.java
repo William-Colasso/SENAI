@@ -1,13 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
+
 package dao;
 
-/**
- *
- * @author william_c_pereira
- */
+import model.Cliente;
+import java.util.*;
+
 public interface ClienteDao {
-    
+    void addCliente (Cliente cliente);
+    Cliente getCliente(int codigo);
+    List<Cliente> getAllClientes();
+    void updateCliente(Cliente cliente);
+    void deleteCliente(int codigo);
 }
