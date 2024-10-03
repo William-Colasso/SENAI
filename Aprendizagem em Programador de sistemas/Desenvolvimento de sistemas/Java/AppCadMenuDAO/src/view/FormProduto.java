@@ -3,10 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package view;
-
+import view.FormMain;
+import dao.ClienteDaoImpl;
 /**
  *
- * @author Professor
+ * @author William_c_Pereira
  */
 public class FormProduto extends javax.swing.JInternalFrame {
 
@@ -29,19 +30,19 @@ public class FormProduto extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jTfQtdPro = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTfDescriPro = new javax.swing.JTextField();
-        jBtnExcluiPro = new javax.swing.JButton();
+        jTfDescPro = new javax.swing.JTextField();
+        btnExcPro = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jBtnNovoPro = new javax.swing.JButton();
+        btnNewPro = new javax.swing.JButton();
         jTfCodPro = new javax.swing.JTextField();
-        jBtnEditarPro = new javax.swing.JButton();
+        btnEditPro = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jBtnSalvarPro = new javax.swing.JButton();
-        jTfPrecoPro = new javax.swing.JTextField();
-        jBtnCancelarPro = new javax.swing.JButton();
+        btnSavePro = new javax.swing.JButton();
+        jTfPrePro = new javax.swing.JTextField();
+        btnCanPro = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTblPro = new javax.swing.JTable();
+        jTbPro = new javax.swing.JTable();
         jTfUniPro = new javax.swing.JTextField();
 
         setClosable(true);
@@ -51,23 +52,23 @@ public class FormProduto extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Descrição:");
 
-        jBtnExcluiPro.setText("Excluir");
+        btnExcPro.setText("Excluir");
 
         jLabel1.setText("Código:");
 
-        jBtnNovoPro.setText("Novo");
+        btnNewPro.setText("Novo");
 
-        jBtnEditarPro.setText("Editar");
+        btnEditPro.setText("Editar");
 
         jLabel2.setText("Preço:");
 
-        jBtnSalvarPro.setText("Salvar");
+        btnSavePro.setText("Salvar");
 
-        jBtnCancelarPro.setText("Cancelar");
+        btnCanPro.setText("Cancelar");
 
         jLabel3.setText("Unidade:");
 
-        jTblPro.setModel(new javax.swing.table.DefaultTableModel(
+        jTbPro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -78,7 +79,7 @@ public class FormProduto extends javax.swing.JInternalFrame {
                 "Código", "Preço", "Unidade", "Quantidade", "Descrição"
             }
         ));
-        jScrollPane2.setViewportView(jTblPro);
+        jScrollPane2.setViewportView(jTbPro);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,25 +93,25 @@ public class FormProduto extends javax.swing.JInternalFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel2)
                     .addComponent(jLabel1)
-                    .addComponent(jTfDescriPro, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+                    .addComponent(jTfDescPro, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
                     .addComponent(jTfQtdPro)
                     .addComponent(jTfUniPro)
-                    .addComponent(jTfPrecoPro)
+                    .addComponent(jTfPrePro)
                     .addComponent(jTfCodPro))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(47, 47, 47)
-                .addComponent(jBtnNovoPro)
+                .addComponent(btnNewPro)
                 .addGap(70, 70, 70)
-                .addComponent(jBtnEditarPro)
+                .addComponent(btnEditPro)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addComponent(jBtnExcluiPro)
+                .addComponent(btnExcPro)
                 .addGap(63, 63, 63)
-                .addComponent(jBtnCancelarPro)
+                .addComponent(btnCanPro)
                 .addGap(61, 61, 61)
-                .addComponent(jBtnSalvarPro)
+                .addComponent(btnSavePro)
                 .addGap(56, 56, 56))
         );
         layout.setVerticalGroup(
@@ -125,7 +126,7 @@ public class FormProduto extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTfPrecoPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTfPrePro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(22, 22, 22)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -137,38 +138,40 @@ public class FormProduto extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTfDescriPro, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTfDescPro, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBtnExcluiPro)
-                    .addComponent(jBtnNovoPro)
-                    .addComponent(jBtnEditarPro)
-                    .addComponent(jBtnSalvarPro)
-                    .addComponent(jBtnCancelarPro))
+                    .addComponent(btnExcPro)
+                    .addComponent(btnNewPro)
+                    .addComponent(btnEditPro)
+                    .addComponent(btnSavePro)
+                    .addComponent(btnCanPro))
                 .addGap(35, 35, 35))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBtnCancelarPro;
-    private javax.swing.JButton jBtnEditarPro;
-    private javax.swing.JButton jBtnExcluiPro;
-    private javax.swing.JButton jBtnNovoPro;
-    private javax.swing.JButton jBtnSalvarPro;
+    private javax.swing.JButton btnCanPro;
+    private javax.swing.JButton btnEditPro;
+    private javax.swing.JButton btnExcPro;
+    private javax.swing.JButton btnNewPro;
+    private javax.swing.JButton btnSavePro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTblPro;
+    private javax.swing.JTable jTbPro;
     private javax.swing.JTextField jTfCodPro;
-    private javax.swing.JTextField jTfDescriPro;
-    private javax.swing.JTextField jTfPrecoPro;
+    private javax.swing.JTextField jTfDescPro;
+    private javax.swing.JTextField jTfPrePro;
     private javax.swing.JTextField jTfQtdPro;
     private javax.swing.JTextField jTfUniPro;
     // End of variables declaration//GEN-END:variables

@@ -31,10 +31,10 @@
                   <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTfDescriPro" alignment="0" pref="266" max="32767" attributes="0"/>
+                  <Component id="jTfDescPro" alignment="0" pref="266" max="32767" attributes="0"/>
                   <Component id="jTfQtdPro" alignment="0" max="32767" attributes="0"/>
                   <Component id="jTfUniPro" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jTfPrecoPro" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jTfPrePro" alignment="0" max="32767" attributes="0"/>
                   <Component id="jTfCodPro" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -43,15 +43,15 @@
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-              <Component id="jBtnNovoPro" min="-2" max="-2" attributes="0"/>
+              <Component id="btnNewPro" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-              <Component id="jBtnEditarPro" min="-2" max="-2" attributes="0"/>
+              <Component id="btnEditPro" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="54" max="32767" attributes="0"/>
-              <Component id="jBtnExcluiPro" min="-2" max="-2" attributes="0"/>
+              <Component id="btnExcPro" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
-              <Component id="jBtnCancelarPro" min="-2" max="-2" attributes="0"/>
+              <Component id="btnCanPro" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-              <Component id="jBtnSalvarPro" min="-2" max="-2" attributes="0"/>
+              <Component id="btnSavePro" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -68,7 +68,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTfPrecoPro" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTfPrePro" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -80,17 +80,17 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTfDescriPro" min="-2" pref="107" max="-2" attributes="0"/>
+                      <Component id="jTfDescPro" min="-2" pref="107" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane2" alignment="0" pref="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jBtnExcluiPro" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jBtnNovoPro" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jBtnEditarPro" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jBtnSalvarPro" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jBtnCancelarPro" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnExcPro" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnNewPro" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnEditPro" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnSavePro" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnCanPro" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
           </Group>
@@ -110,9 +110,9 @@
         <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTfDescriPro">
+    <Component class="javax.swing.JTextField" name="jTfDescPro">
     </Component>
-    <Component class="javax.swing.JButton" name="jBtnExcluiPro">
+    <Component class="javax.swing.JButton" name="btnExcPro">
       <Properties>
         <Property name="text" type="java.lang.String" value="Excluir"/>
       </Properties>
@@ -122,14 +122,14 @@
         <Property name="text" type="java.lang.String" value="C&#xf3;digo:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jBtnNovoPro">
+    <Component class="javax.swing.JButton" name="btnNewPro">
       <Properties>
         <Property name="text" type="java.lang.String" value="Novo"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTfCodPro">
     </Component>
-    <Component class="javax.swing.JButton" name="jBtnEditarPro">
+    <Component class="javax.swing.JButton" name="btnEditPro">
       <Properties>
         <Property name="text" type="java.lang.String" value="Editar"/>
       </Properties>
@@ -139,14 +139,14 @@
         <Property name="text" type="java.lang.String" value="Pre&#xe7;o:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jBtnSalvarPro">
+    <Component class="javax.swing.JButton" name="btnSavePro">
       <Properties>
         <Property name="text" type="java.lang.String" value="Salvar"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTfPrecoPro">
+    <Component class="javax.swing.JTextField" name="jTfPrePro">
     </Component>
-    <Component class="javax.swing.JButton" name="jBtnCancelarPro">
+    <Component class="javax.swing.JButton" name="btnCanPro">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>
@@ -160,7 +160,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jTblPro">
+        <Component class="javax.swing.JTable" name="jTbPro">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="5" rowCount="4">
