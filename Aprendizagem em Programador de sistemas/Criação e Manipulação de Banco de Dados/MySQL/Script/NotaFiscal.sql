@@ -1,26 +1,26 @@
-
+create database bdnotafiscal;
 USE bdnotafiscal;
 
 
 CREATE TABLE Cliente (
-    idCliente INT NOT NULL PRIMARY KEY,
-    nome VARCHAR(45) NOT NULL,
-    endereco VARCHAR(100) NOT NULL
+    idCliente int not null auto_increment primary key,
+    nome VARCHAR(45) not null,
+    endereco VARCHAR(100) not null
 );
 
 
 CREATE TABLE Vendedor (
-    idVendedor INT NOT NULL PRIMARY KEY,
-    nome VARCHAR(45) NOT NULL
+    idVendedor int not null auto_increment primary key,
+    nome VARCHAR(45) not null
 );
 
 
 CREATE TABLE NotaFiscal (
-    idNotaFiscal INT NOT NULL PRIMARY KEY,
+    idNotaFiscal int not null auto_increment primary key,
     dataEmissao DATE NOT NULL,
-    totalNota DECIMAL(10,2) NOT NULL,
-    idCliente INT NOT NULL, -- Adicionando a coluna idCliente
-    idVendedor INT NOT NULL, -- Adicionando a coluna idVendedor
+    totalNota DECIMAL(10,2) not null,
+    idCliente INT not null, 
+    idVendedor INT not null,
     
   
     CONSTRAINT id_cliente_fk FOREIGN KEY (idCliente) REFERENCES Cliente(idCliente),
@@ -29,21 +29,23 @@ CREATE TABLE NotaFiscal (
 
 
 CREATE TABLE Produto (
-    idProduto INT NOT NULL PRIMARY KEY,
-    descricao VARCHAR(45) NOT NULL,
-    unidade VARCHAR(2) NOT NULL,
-    preco DECIMAL(10,2) NOT NULL
+    idProduto int not null auto_increment primary key,
+    descricao VARCHAR(45) not null,
+    unidade VARCHAR(2) not null,
+    preco DECIMAL(10,2) not null
 );
+
 
 
 CREATE TABLE ItemNotaFiscal (
     idProduto INT NOT NULL,
     idNotaFiscal INT NOT NULL,
     quantidade INT NOT NULL,
-    precoProduto DECIMAL(10,2) NOT NULL, -- Mudança para decimal
-    totalProduto DECIMAL(10,2) NOT NULL, -- Mudança para decimal
+    precoProduto int not null, 
+    totalProduto int not null, 
     
-   
+    primary key(idProduto,IdNotaFiscal),
+    
     constraint id_itemNotaFiscal_idProduto_fk
     FOREIGN KEY (idProduto) REFERENCES Produto(idProduto),
     constraint id_itemNotaFiscal_idNotaFiscal_fk
