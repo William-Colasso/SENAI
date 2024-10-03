@@ -4,10 +4,13 @@
  */
 package dao;
 
-/**
- *
- * @author william_c_pereira
- */
+import model.Produto;
+import java.util.*;
+
 public interface ProdutoDao {
-    
+    void addProduto(Produto produto);
+    Produto getProduto(int codigo);
+    List<Produto> getAllProdutos();
+    void updateProduto(Produto produto);
+    void deleteProduto(int codigo);
 }

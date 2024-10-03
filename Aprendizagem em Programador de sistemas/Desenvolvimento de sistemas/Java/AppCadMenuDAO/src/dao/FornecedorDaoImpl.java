@@ -32,7 +32,7 @@ public class FornecedorDaoImpl implements FornecedorDao {
     public void addFornecedor(Fornecedor fornecedor) {
         try {
 
-            String query = "INSERT INTO Fornecedor (empresa, contato,fone, email) (?,?,?,?)";
+            String query = "INSERT INTO Fornecedor (empresa, contato,fone, email) VALUES  (?,?,?,?)";
 
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, fornecedor.getEmpresa());
@@ -97,13 +97,35 @@ public class FornecedorDaoImpl implements FornecedorDao {
 
     @Override
     public void updateFornecedor(Fornecedor fornecedor) {
-
+        try{
+            String query = "UPDATE Fornecedor SET empresa = ?, contato=?, fone=?, email=? WHERE codigo = ?";
+            
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, fornecedor.getEmpresa());
+            statement.setString(2, fornecedor.getContato());
+            statement.setString(3, fornecedor.getFone());
+            statement.setString(4, fornecedor.getEmail());
+            statement.setInt(5,fornecedor.getCod());
+            
+            statement.executeUpdate();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
         
     }
 
     @Override
     public void deleteFornecedor(int codigo) {
-
+        try{
+            String query = "DELETE FROM Fornecedor WHERE codigo = ?";
+            
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, codigo);
+            
+            statement.executeUpdate();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
     }
 
 }
