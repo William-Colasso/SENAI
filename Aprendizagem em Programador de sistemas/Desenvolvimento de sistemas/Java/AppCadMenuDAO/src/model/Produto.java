@@ -3,8 +3,8 @@ package model;
 
 public class Produto {
     
-    private int cod;
-    private String desc;
+    private int codigo;
+    private String descricao;
     private String unidade;
     private float qtd;
     private float preco;
@@ -16,9 +16,9 @@ public class Produto {
     public Produto() {
     }
 
-    public Produto(int cod, String desc, String unidade, float qtd, float preco) {
-        this.cod = cod;
-        this.desc = desc;
+    public Produto(int codigo, String descricao, String unidade, float qtd, float preco) {
+        this.codigo = codigo;
+        this.descricao = descricao;
         this.unidade = unidade;
         this.qtd = qtd;
         this.preco = preco;
@@ -27,11 +27,11 @@ public class Produto {
     //Getters
 
     public int getCod() {
-        return cod;
+        return codigo;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescricao() {
+        return descricao;
     }
 
     public String getUnidade() {
@@ -48,12 +48,12 @@ public class Produto {
     
     //Setters
 
-    public void setCod(int cod) {
-        this.cod = cod;
+    public void setCod(int codigo) {
+        this.codigo = codigo;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public void setUnidade(String unidade) {
