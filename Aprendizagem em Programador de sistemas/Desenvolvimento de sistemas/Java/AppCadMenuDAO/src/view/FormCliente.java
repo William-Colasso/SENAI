@@ -40,13 +40,13 @@ public class FormCliente extends javax.swing.JInternalFrame {
             }
 
             jTbCli.setModel(modeloCli);
-            jTbCli.getColumnModel().getColumn(0).setPreferredWidth(50);
-            jTbCli.getColumnModel().getColumn(1).setPreferredWidth(250);
-            jTbCli.getColumnModel().getColumn(2).setPreferredWidth(80);
-            jTbCli.getColumnModel().getColumn(3).setPreferredWidth(80);
-            jTbCli.getColumnModel().getColumn(4).setPreferredWidth(80);
+            jTbCli.getColumnModel().getColumn(0).setPreferredWidth(100);
+            jTbCli.getColumnModel().getColumn(1).setPreferredWidth(150);
+            jTbCli.getColumnModel().getColumn(2).setPreferredWidth(100);
+            jTbCli.getColumnModel().getColumn(3).setPreferredWidth(100);
+            jTbCli.getColumnModel().getColumn(4).setPreferredWidth(100);
 
-            jTbCli.setModel(modeloCli);
+            
         } else {
             JOptionPane.showMessageDialog(null, "Ainda não há registros de clientes cadastrados");
         }
@@ -318,6 +318,7 @@ public class FormCliente extends javax.swing.JInternalFrame {
         }
 
         tblCliente();
+        inicilize();
     }//GEN-LAST:event_btnExcCliActionPerformed
 
     private void btnNewCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewCliActionPerformed

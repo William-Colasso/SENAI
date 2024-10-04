@@ -6,7 +6,7 @@ public class Produto {
     private int codigo;
     private String descricao;
     private String unidade;
-    private float qtd;
+    private float quantidade;
     private float preco;
     
     
@@ -16,11 +16,17 @@ public class Produto {
     public Produto() {
     }
 
-    public Produto(int codigo, String descricao, String unidade, float qtd, float preco) {
+    public Produto(int codigo, String descricao, String unidade, float quantidade, float preco) {
         this.codigo = codigo;
         this.descricao = descricao;
         this.unidade = unidade;
-        this.qtd = qtd;
+        this.quantidade = quantidade;
+        this.preco = preco;
+    }
+    public Produto( String descricao, String unidade, float quantidade, float preco) {
+        this.descricao = descricao;
+        this.unidade = unidade;
+        this.quantidade = quantidade;
         this.preco = preco;
     }
     
@@ -39,7 +45,7 @@ public class Produto {
     }
 
     public float getQtd() {
-        return qtd;
+        return quantidade;
     }
 
     public float getPreco() {
@@ -60,8 +66,8 @@ public class Produto {
         this.unidade = unidade;
     }
 
-    public void setQtd(float qtd) {
-        this.qtd = qtd;
+    public void setQtd(float quantidade) {
+        this.quantidade = quantidade;
     }
 
     public void setPreco(float preco) {

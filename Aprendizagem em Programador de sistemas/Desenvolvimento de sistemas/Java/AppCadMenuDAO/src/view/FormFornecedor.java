@@ -4,19 +4,87 @@
  */
 package view;
 
-/**
- *
- * @author william_c_pereira
- */
+import model.Fornecedor;
+import dao.FornecedorDaoImpl;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 public class FormFornecedor extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form FormCliente
-     */
-    public FormFornecedor() {
-        initComponents();
+    FornecedorDaoImpl fornecedorImpl = new FornecedorDaoImpl();
+    public boolean isEditing = false;
+    public static List<Fornecedor> listaFornecedor;
+
+    public void tblFornecedor() {
+        listaFornecedor = fornecedorImpl.getAllFornecedores();
+        DefaultTableModel modeloFor = new DefaultTableModel(new Object[]{"Código",
+            "Contato",
+            "E-mail",
+            "Telefone",
+            "Empresa"}, 0);
+
+        for (int i = 0; i < listaFornecedor.size(); i++) {
+            Object linhaFor[] = new Object[]{
+                listaFornecedor.get(i).getCod(),
+                listaFornecedor.get(i).getContato(),
+                listaFornecedor.get(i).getContato(),
+                listaFornecedor.get(i).getFone(),
+                listaFornecedor.get(i).getEmpresa()
+            };
+            modeloFor.addRow(linhaFor);
+        }
+        jTbFor.setModel(modeloFor);
+        jTbFor.getColumnModel().getColumn(0).setPreferredWidth(100);
+        jTbFor.getColumnModel().getColumn(1).setPreferredWidth(150);
+        jTbFor.getColumnModel().getColumn(2).setPreferredWidth(100);
+        jTbFor.getColumnModel().getColumn(3).setPreferredWidth(100);
+        jTbFor.getColumnModel().getColumn(4).setPreferredWidth(100);
+
     }
 
+    public FormFornecedor() {
+        initComponents();
+        tblFornecedor();
+        inicilize();
+    }
+
+    public void enableButtons(boolean choose) {
+        btnNewFor.setEnabled(choose);
+        btnCanFor.setEnabled(choose);
+        btnEditFor.setEnabled(choose);
+        btnExcFor.setEnabled(choose);
+        btnSaveFor.setEnabled(choose);
+    }
+    
+    public void enableInputs(boolean choose) {
+        jTfCodFor.setEnabled(false);
+        jTfEmpFor.setEnabled(choose);
+        jTfContFor.setEnabled(choose);
+        jTfFoneFor.setEnabled(choose);
+        jTfMailFor.setEnabled(choose);
+
+        
+        
+
+        if (!choose) {
+            jTfCodFor.setText("");
+            jTfEmpFor.setText("");
+            jTfContFor.setText("");
+            jTfFoneFor.setText("");
+            jTfMailFor.setText("");
+
+        }
+        
+    }
+    
+    public void inicilize() {
+        enableButtons(false);
+        enableInputs(false);
+        btnNewFor.setEnabled(true);
+        isEditing = false;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,7 +103,6 @@ public class FormFornecedor extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jTfFoneFor = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTfEmpFor = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTbFor = new javax.swing.JTable();
         btnNewFor = new javax.swing.JButton();
@@ -43,6 +110,8 @@ public class FormFornecedor extends javax.swing.JInternalFrame {
         btnExcFor = new javax.swing.JButton();
         btnCanFor = new javax.swing.JButton();
         btnSaveFor = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTfEmpFor = new javax.swing.JTextArea();
 
         setClosable(true);
         setIconifiable(true);
@@ -84,20 +153,32 @@ public class FormFornecedor extends javax.swing.JInternalFrame {
 
         jTbFor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Código", "Contato", "E-mail", "Telefone", "Empresa"
             }
         ));
+        jTbFor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTbForMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTbFor);
 
         btnNewFor.setText("Novo");
+        btnNewFor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewForActionPerformed(evt);
+            }
+        });
 
         btnEditFor.setText("Editar");
+        btnEditFor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditForActionPerformed(evt);
+            }
+        });
 
         btnExcFor.setText("Excluir");
         btnExcFor.addActionListener(new java.awt.event.ActionListener() {
@@ -107,8 +188,22 @@ public class FormFornecedor extends javax.swing.JInternalFrame {
         });
 
         btnCanFor.setText("Cancelar");
+        btnCanFor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCanForActionPerformed(evt);
+            }
+        });
 
         btnSaveFor.setText("Salvar");
+        btnSaveFor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveForActionPerformed(evt);
+            }
+        });
+
+        jTfEmpFor.setColumns(20);
+        jTfEmpFor.setRows(5);
+        jScrollPane2.setViewportView(jTfEmpFor);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,33 +212,36 @@ public class FormFornecedor extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jTfEmpFor, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                            .addComponent(jTfFoneFor)
-                            .addComponent(jTfMailFor)
-                            .addComponent(jTfContFor)
-                            .addComponent(jTfCodFor)))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(59, 59, 59)
                         .addComponent(btnNewFor)
                         .addGap(77, 77, 77)
-                        .addComponent(btnEditFor)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                        .addComponent(btnEditFor))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel1)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel5)
+                                .addComponent(jTfFoneFor, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                                .addComponent(jTfMailFor)
+                                .addComponent(jTfContFor)
+                                .addComponent(jTfCodFor)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 21, Short.MAX_VALUE)
                         .addComponent(btnExcFor)
                         .addGap(58, 58, 58)
                         .addComponent(btnCanFor)
                         .addGap(49, 49, 49)
-                        .addComponent(btnSaveFor))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
+                        .addComponent(btnSaveFor)
+                        .addGap(0, 48, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,9 +266,9 @@ public class FormFornecedor extends javax.swing.JInternalFrame {
                         .addComponent(jTfFoneFor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTfEmpFor, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnNewFor)
@@ -202,8 +300,102 @@ public class FormFornecedor extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTfFoneForActionPerformed
 
     private void btnExcForActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcForActionPerformed
-        // TODO add your handling code here:
+        int linhaSelecionada = jTbFor.getSelectedRow();
+        if (linhaSelecionada != -1) {
+            int a = JOptionPane.showConfirmDialog(null, "Realmente deseja excluir?", "Confirmar", JOptionPane.YES_OPTION);
+
+            if (a == JOptionPane.YES_OPTION) {
+
+                int codigo = Integer.parseInt(jTbFor.getValueAt(linhaSelecionada, 0).toString());
+
+                fornecedorImpl.deleteFornecedor(codigo);
+                
+                enableButtons(false);
+                btnNewFor.setEnabled(true);
+                enableInputs(false);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um cliente para excluir.");
+        }
+
+        tblFornecedor();
+        inicilize();
     }//GEN-LAST:event_btnExcForActionPerformed
+
+    private void btnNewForActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewForActionPerformed
+        enableButtons(false);
+        enableInputs(true);
+        btnCanFor.setEnabled(true);
+        btnSaveFor.setEnabled(true);
+        
+        isEditing = false;
+    }//GEN-LAST:event_btnNewForActionPerformed
+
+    private void btnEditForActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditForActionPerformed
+        enableInputs(true);
+        btnCanFor.setEnabled(true);
+        btnEditFor.setEnabled(false);
+        btnSaveFor.setEnabled(true);
+        btnExcFor.setEnabled(false);
+        isEditing = true;
+    }//GEN-LAST:event_btnEditForActionPerformed
+
+    private void btnCanForActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCanForActionPerformed
+        enableButtons(false);
+        btnNewFor.setEnabled(true);
+        enableInputs(false);
+        isEditing = false;
+    }//GEN-LAST:event_btnCanForActionPerformed
+
+    private void btnSaveForActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveForActionPerformed
+        
+        String empresa = jTfEmpFor.getText();
+        String contato = jTfContFor.getText();
+        String fone = jTfFoneFor.getText();
+        String email = jTfMailFor.getText();
+
+        int a = JOptionPane.showConfirmDialog(null, "Deseja realmente salvar essas informações?\n\n"
+                + "\nEmpresa: " + empresa
+                + "\nContato: " + contato
+                + "\nFone: " + fone
+                + "\nEmail: " + email,
+                "Confirmar", JOptionPane.YES_OPTION);
+
+        if (a == JOptionPane.YES_OPTION && (!empresa.isEmpty() && !contato.isEmpty() && !fone.isEmpty() && !email.isEmpty())) {
+
+            if (isEditing) {
+                int cod = Integer.parseInt(jTfCodFor.getText());
+                Fornecedor fornecedor = new Fornecedor(cod, empresa, contato, fone, email);
+                fornecedorImpl.updateFornecedor(fornecedor);
+                isEditing = false;
+            } else {
+                Fornecedor fornecedor = new Fornecedor(empresa, contato, fone, email);
+                fornecedorImpl.addFornecedor(fornecedor);
+            }
+            
+            inicilize();
+            tblFornecedor();
+           
+        } else if ((empresa.isEmpty() || contato.isEmpty() || fone.isEmpty() || email.isEmpty())) {
+            JOptionPane.showMessageDialog(null, "Por favor preencha todos os campos");
+        }
+    }//GEN-LAST:event_btnSaveForActionPerformed
+
+    private void jTbForMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTbForMouseClicked
+        int linhaSelecionada = jTbFor.getSelectedRow();
+        inicilize();
+        jTfCodFor.setText(jTbFor.getValueAt(linhaSelecionada, 0).toString());
+        jTfEmpFor.setText(jTbFor.getValueAt(linhaSelecionada, 4).toString());
+        jTfContFor.setText(jTbFor.getValueAt(linhaSelecionada, 1).toString());
+        jTfFoneFor.setText(jTbFor.getValueAt(linhaSelecionada, 3).toString());
+        jTfMailFor.setText(jTbFor.getValueAt(linhaSelecionada, 2).toString());
+
+        btnNewFor.setEnabled(false);
+        btnEditFor.setEnabled(true);
+        btnCanFor.setEnabled(true);
+        btnExcFor.setEnabled(true);
+
+    }//GEN-LAST:event_jTbForMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -218,10 +410,11 @@ public class FormFornecedor extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTbFor;
     private javax.swing.JTextField jTfCodFor;
     private javax.swing.JTextField jTfContFor;
-    private javax.swing.JTextField jTfEmpFor;
+    private javax.swing.JTextArea jTfEmpFor;
     private javax.swing.JTextField jTfFoneFor;
     private javax.swing.JTextField jTfMailFor;
     // End of variables declaration//GEN-END:variables
