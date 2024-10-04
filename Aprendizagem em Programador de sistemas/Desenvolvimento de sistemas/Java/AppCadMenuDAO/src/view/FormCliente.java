@@ -1,20 +1,89 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package view;
 
-/**
- *
- * @author william_c_pereira
- */
+import dao.ClienteDaoImpl;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.Cliente;
+
 public class FormCliente extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form FormCliente
-     */
+    ClienteDaoImpl clientImpl = new ClienteDaoImpl();
+    public boolean isEditing = false;
+    public static List<Cliente> listaCliente;
+
     public FormCliente() {
         initComponents();
+        listaCliente = new ArrayList<>();
+        tblCliente();
+        inicilize();
+    }
+
+    public void tblCliente() {
+        listaCliente = clientImpl.getAllClientes();
+        if (listaCliente != null && !listaCliente.isEmpty()) {
+
+            DefaultTableModel modeloCli = new DefaultTableModel(new Object[]{"Código",
+                "Nome",
+                "Fone",
+                "Email",
+                "Endereço"}, 0);
+
+            for (int i = 0; i < listaCliente.size(); i++) {
+                Object linhaCli[] = new Object[]{listaCliente.get(i).getCodigo(),
+                    listaCliente.get(i).getNome(),
+                    listaCliente.get(i).getFone(),
+                    listaCliente.get(i).getEmail(),
+                    listaCliente.get(i).getEndereco()};
+                modeloCli.addRow(linhaCli);
+            }
+
+            jTbCli.setModel(modeloCli);
+            jTbCli.getColumnModel().getColumn(0).setPreferredWidth(50);
+            jTbCli.getColumnModel().getColumn(1).setPreferredWidth(250);
+            jTbCli.getColumnModel().getColumn(2).setPreferredWidth(80);
+            jTbCli.getColumnModel().getColumn(3).setPreferredWidth(80);
+            jTbCli.getColumnModel().getColumn(4).setPreferredWidth(80);
+
+            jTbCli.setModel(modeloCli);
+        } else {
+            JOptionPane.showMessageDialog(null, "Ainda não há registros de clientes cadastrados");
+        }
+
+    }
+
+    public void enableButtons(boolean choose) {
+        btnNewCli.setEnabled(choose);
+        btnCanCli.setEnabled(choose);
+        btnEditCli.setEnabled(choose);
+        btnExcCli.setEnabled(choose);
+        btnSaveCli.setEnabled(choose);
+    }
+
+    public void enableInputs(boolean choose) {
+        jTfCodCli.setEnabled(false);
+        jTfNameCli.setEnabled(choose);
+        jTfFoneCli.setEnabled(choose);
+        jTfMailCli.setEnabled(choose);
+        jTaCli.setEnabled(choose);
+
+        if (!choose) {
+            jTfNameCli.setText("");
+            jTfCodCli.setText("");
+            jTfFoneCli.setText("");
+            jTfMailCli.setText("");
+            jTaCli.setText("");  // Para o campo de texto de endereço, supondo que seja uma JTextArea
+        }
+
+    }
+
+    public void inicilize() {
+
+        enableButtons(false);
+        enableInputs(false);
+        btnNewCli.setEnabled(true);
+        isEditing = false;
     }
 
     /**
@@ -35,7 +104,6 @@ public class FormCliente extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jTfMailCli = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTfEndCli = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTbCli = new javax.swing.JTable();
         btnNewCli = new javax.swing.JButton();
@@ -43,6 +111,8 @@ public class FormCliente extends javax.swing.JInternalFrame {
         btnExcCli = new javax.swing.JButton();
         btnCanCli = new javax.swing.JButton();
         btnSaveCli = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTaCli = new javax.swing.JTextArea();
 
         setClosable(true);
         setIconifiable(true);
@@ -84,20 +154,32 @@ public class FormCliente extends javax.swing.JInternalFrame {
 
         jTbCli.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "Matrícula", "Nome", "Fone", "Email", "Endereço"
+                "Código", "Nome", "Fone", "Email", "Endereço"
             }
         ));
+        jTbCli.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTbCliMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTbCli);
 
         btnNewCli.setText("Novo");
+        btnNewCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewCliActionPerformed(evt);
+            }
+        });
 
         btnEditCli.setText("Editar");
+        btnEditCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditCliActionPerformed(evt);
+            }
+        });
 
         btnExcCli.setText("Excluir");
         btnExcCli.addActionListener(new java.awt.event.ActionListener() {
@@ -107,8 +189,22 @@ public class FormCliente extends javax.swing.JInternalFrame {
         });
 
         btnCanCli.setText("Cancelar");
+        btnCanCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCanCliActionPerformed(evt);
+            }
+        });
 
         btnSaveCli.setText("Salvar");
+        btnSaveCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveCliActionPerformed(evt);
+            }
+        });
+
+        jTaCli.setColumns(20);
+        jTaCli.setRows(5);
+        jScrollPane2.setViewportView(jTaCli);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,23 +213,24 @@ public class FormCliente extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jTfEndCli, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                            .addComponent(jTfMailCli)
-                            .addComponent(jTfFoneCli)
-                            .addComponent(jTfNameCli)
-                            .addComponent(jTfCodCli)))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(59, 59, 59)
                         .addComponent(btnNewCli)
                         .addGap(77, 77, 77)
-                        .addComponent(btnEditCli)))
+                        .addComponent(btnEditCli))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel1)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel5)
+                                .addComponent(jTfMailCli, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                                .addComponent(jTfFoneCli)
+                                .addComponent(jTfNameCli)
+                                .addComponent(jTfCodCli)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -151,7 +248,7 @@ public class FormCliente extends javax.swing.JInternalFrame {
                 .addGap(17, 17, 17)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jTfCodCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -168,9 +265,9 @@ public class FormCliente extends javax.swing.JInternalFrame {
                         .addComponent(jTfMailCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTfEndCli, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGap(10, 10, 10)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnNewCli)
@@ -202,8 +299,104 @@ public class FormCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTfMailCliActionPerformed
 
     private void btnExcCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcCliActionPerformed
-        // TODO add your handling code here:
+        int linhaSelecionada = jTbCli.getSelectedRow();
+        if (linhaSelecionada != -1) {
+            int a = JOptionPane.showConfirmDialog(null, "Realmente deseja excluir?", "Confirmar", JOptionPane.YES_OPTION);
+
+            if (a == JOptionPane.YES_OPTION) {
+
+                int codigo = Integer.parseInt(jTbCli.getValueAt(linhaSelecionada, 0).toString());
+
+                clientImpl.deleteCliente(codigo);
+                
+                enableButtons(false);
+                btnNewCli.setEnabled(true);
+                enableInputs(false);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um cliente para excluir.");
+        }
+
+        tblCliente();
     }//GEN-LAST:event_btnExcCliActionPerformed
+
+    private void btnNewCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewCliActionPerformed
+        btnSaveCli.setEnabled(true);
+        btnNewCli.setEnabled(false);
+        btnCanCli.setEnabled(true);
+        enableInputs(true);
+    }//GEN-LAST:event_btnNewCliActionPerformed
+
+    private void btnEditCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditCliActionPerformed
+
+        if (jTbCli.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(null, "Selecione um cliente para editar.");
+            return;
+        } else {
+
+            enableButtons(false);
+            btnSaveCli.setEnabled(true);
+            btnCanCli.setEnabled(true);
+            btnEditCli.setEnabled(false);
+            enableInputs(true);
+            isEditing = true;
+    }//GEN-LAST:event_btnEditCliActionPerformed
+    }
+    private void btnCanCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCanCliActionPerformed
+        enableButtons(false);
+        btnNewCli.setEnabled(true);
+        enableInputs(false);
+        isEditing = false;
+    }//GEN-LAST:event_btnCanCliActionPerformed
+
+    private void btnSaveCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveCliActionPerformed
+
+        String nome = jTfNameCli.getText();
+        String telefone = jTfFoneCli.getText();
+        String email = jTfMailCli.getText();
+        String endereco = jTaCli.getText();
+
+        int a = JOptionPane.showConfirmDialog(null, "Deseja Realmente salvar essas informações?\n\n"
+                + "\nNome: " + nome
+                + "\nTelefone: " + telefone
+                + "\nEmail: " + email
+                + "\nEndereço: " + endereco,
+                "Confirmar", JOptionPane.YES_OPTION);
+
+        if (a == JOptionPane.YES_OPTION && (!nome.isEmpty() && !telefone.isEmpty() && !email.isEmpty() && !endereco.isEmpty())) {
+
+            if (isEditing) {
+                int codigo = Integer.parseInt(jTfCodCli.getText());
+                Cliente cliente = new Cliente(codigo, nome, telefone, email, endereco);
+                clientImpl.updateCliente(cliente);
+
+            } else {
+                Cliente cliente = new Cliente(nome, telefone, email, endereco);
+                clientImpl.addCliente(cliente);
+            }
+            inicilize();
+            tblCliente();
+        } else if ((nome.isEmpty() || telefone.isEmpty() || email.isEmpty() || endereco.isEmpty())) {
+            JOptionPane.showMessageDialog(null, "Por favor preencha todos os campos");
+        }
+    }//GEN-LAST:event_btnSaveCliActionPerformed
+
+    private void jTbCliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTbCliMouseClicked
+        btnExcCli.setEnabled(true);
+        btnCanCli.setEnabled(true);
+        btnNewCli.setEnabled(false);
+        btnSaveCli.setEnabled(false);
+        btnEditCli.setEnabled(true);
+        enableInputs(false);
+
+        int linhaSelecionada = jTbCli.getSelectedRow();
+
+        jTfCodCli.setText(jTbCli.getValueAt(linhaSelecionada, 0).toString());
+        jTfNameCli.setText(jTbCli.getValueAt(linhaSelecionada, 1).toString());
+        jTfFoneCli.setText(jTbCli.getValueAt(linhaSelecionada, 2).toString());
+        jTfMailCli.setText(jTbCli.getValueAt(linhaSelecionada, 3).toString());
+        jTaCli.setText(jTbCli.getValueAt(linhaSelecionada, 4).toString());
+    }//GEN-LAST:event_jTbCliMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -218,9 +411,10 @@ public class FormCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTaCli;
     private javax.swing.JTable jTbCli;
     private javax.swing.JTextField jTfCodCli;
-    private javax.swing.JTextField jTfEndCli;
     private javax.swing.JTextField jTfFoneCli;
     private javax.swing.JTextField jTfMailCli;
     private javax.swing.JTextField jTfNameCli;

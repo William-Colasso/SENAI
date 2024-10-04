@@ -3,6 +3,7 @@ package dao;
 import java.util.*;
 import model.Cliente;
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 public class ClienteDaoImpl implements ClienteDao {
 
@@ -16,6 +17,7 @@ public class ClienteDaoImpl implements ClienteDao {
 
             connection = DriverManager.getConnection(url, user, password);
         } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao conectar com o banco de dados.");
             e.printStackTrace();
         }
 
@@ -35,6 +37,7 @@ public class ClienteDaoImpl implements ClienteDao {
 
             statement.executeUpdate();
         } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao conectar com o banco de dados.");
             e.printStackTrace();
         }
     }
@@ -55,6 +58,7 @@ public class ClienteDaoImpl implements ClienteDao {
             }
 
         } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao conectar com o banco de dados.");
             e.printStackTrace();
         }
 
@@ -72,10 +76,11 @@ public class ClienteDaoImpl implements ClienteDao {
             ResultSet resultSet = statement.executeQuery(query);
 
             while (resultSet.next()) {
-                clientes.add(new Cliente(resultSet.getString("nome"), resultSet.getString("fone"), resultSet.getString("email"),resultSet.getString("endereco")));
+                clientes.add(new Cliente(resultSet.getInt("codigo"),resultSet.getString("nome"), resultSet.getString("fone"), resultSet.getString("email"),resultSet.getString("endereco")));
             }
 
         } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao conectar com o banco de dados.");
             e.printStackTrace();
         }
         return clientes;
@@ -96,6 +101,7 @@ public class ClienteDaoImpl implements ClienteDao {
             statement.executeUpdate();
 
         } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao conectar com o banco de dados.");
             e.printStackTrace();
         }
 
@@ -111,6 +117,7 @@ public class ClienteDaoImpl implements ClienteDao {
             statement.executeUpdate();
 
         } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao conectar com o banco de dados.");
             e.printStackTrace();
         }
     }
