@@ -27,12 +27,7 @@ create table Produto(
     descricao varchar(150) not null
 );
 
-select * from Cliente;
-select * from Fornecedor;
-select * from Produto;
-insert into Fornecedor values(0,"a","a","a","a");
 
-insert into Produto values(0,"a","a",0,0);
 
 INSERT INTO Cliente (nome, fone, email, endereco)
 VALUES 
@@ -59,3 +54,8 @@ VALUES
 (7.99, 'un', 200.00, 'Café torrado e moído 500g'),
 (12.75, 'lt', 120.00, 'Leite integral 1 litro'),
 (3.50, 'un', 300.00, 'Sabonete líquido 200ml');
+
+
+select * from Cliente;
+select * from Fornecedor;
+select * from Produto;
