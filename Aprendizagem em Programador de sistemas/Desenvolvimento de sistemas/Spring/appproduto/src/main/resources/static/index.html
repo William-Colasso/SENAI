@@ -11,6 +11,7 @@
         background-color: #f0f0f0;
         margin: 0;
         padding: 20px;
+        
       }
 
       h2 {
@@ -21,8 +22,7 @@
         padding: 20px;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        max-width: 400px;
-        margin: auto;
+
       }
 
       label {
@@ -31,7 +31,8 @@
         color: #555;
       }
       input[type="text"],
-      input[type="number"] {
+      input[type="number"],
+      input[type="date"] {
         width: 90%;
         padding: 10px;
         margin-bottom: 12px;
@@ -49,17 +50,68 @@
       input[type="submit"]:hover {
         background-color: #4caf50;
       }
+
+      .containerForm{
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        margin: auto;
+      }
+      .formProduto{
+        padding: 10px;
+        border: solid #777777 1px;
+        border-radius: 4px;
+        width: calc(50% - 20px);
+        display: flex;
+      }
+      .formPedido{padding: 10px;
+
+        border: solid #777777 1px;
+        width: calc(50% - 20px);
+        border-radius: 4px;
+        display: flex;
+      }
+
+      form{
+        width: 99%;
+        
+      }
     </style>
   </head>
   <body>
-    <h2>Cadastro de Produto</h2>
-    <form action="/save" method="post">
-      <label for="descricao">Descrição</label>
-      <input type="text" name="descricao" id="descricao" required />
+    
 
-      <label for="preco">Preço</label>
-      <input type="number" name="preco" id="preco" step="0.01" required /> <br/>
-      <input type="submit" value="Cadastrar Produto"/>
-    </form>
+      
+        <div class="containerForm">
+          <div class="formProduto">
+            <form action="/saveProduto" method="post">
+              <h2>Cadastro de Produto</h2>
+              <label for="descricao">Descrição</label>
+              <input type="text" name="descricao" id="descricao" required />
+              <label for="preco">Preço</label>
+              <input type="number" name="preco" id="preco" step="0.01" required /> <br/>
+              <input type="submit" value="Cadastrar Produto"/>
+            </form>
+          </div>
+          
+          <div class="formPedido">
+            <form action="/savePedido" method="post">
+              <h2>Cadastro de Pedido</h2>
+              <label for="DataPedido">Data do pedido</label>
+              <input type="date" name="DataPedido" id="DataPedido" required /> 
+              
+              <label for="idProduto">Id do produto</label>
+              <input type="number" name="idProduto" id="idProduto" step="0.01" required />
+              <input type="submit" value="Cadastrar Pedido"/>
+            </form>
+          </div>
+        </div>
+
+      
+    
+      
+    
+
+
   </body>
 </html>
