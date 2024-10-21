@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de produtos</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <h1>Lista de Produtos</h1>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Preço</th>
+        <th>Quantidade</th>
+        <th>Categoria</th>
+        <th>Fornecedor</th>
+        <th>Imagem</th>
+        <th>Ações</th>
+        <!--Editar e deletar-->
+      </tr>
+      <tr th:each="produto : ${produto}">
+        <td td:text="produto.id"></td>
+        <td td:text="produto.nome"></td>
+        <td td:text="produto.descricao"></td>
+        <td td:text="produto.preco"></td>
+        <td td:text="produto.quantidade"></td>
+        <td td:text="produto.categoria"></td>
+        <td td:text="produto.fornecedor"></td>
+        <td>
+          <img
+            th:src="@{/produto/imagem/{id}(id=${produto.id})}"
+            alt="Imagem do produto"
+            class="produto-imagem"
+          />
+        </td>
+        <td>
+          <div class="acao">
+            <a th:href="@{/produto/editar/{id}(id=${produto.id})}">
+              <button type="button" class="edit">Editar</button>
+            </a>
+
+            <!--Botão para deletar o produto com confirmação-->
+            <form
+              th:action="@{/produto/deletar/{id}(id=$produto.id)}"
+              method="post"
+            >
+              <button
+                type="submit"
+                onclick="return confirm('Tem certeza que deseja deletar o produto?');"
+                class="del"
+              >
+                Deletar
+              </button>
+            </form>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <!--Botão para retornar oao formulário de cadastro-->
+    <br>
+    <a th:href="@{/cadastrar}">
+        <button type="button">Cadastrar Novo Produto</button>
+    </a>
+  </body>
+</html>
