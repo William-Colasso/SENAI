@@ -77,6 +77,32 @@ INSERT INTO EMPREGADO (ID_EMPREGADO, NM_EMPREGADO, FUNCAO, LIDER, DATA_CONTRATAC
 (7369, 'SMITH', 'ESCRITURÁRIO', 7902, '1980-12-17', 800.00, NULL, 20); -- SMITH reporta a FORD
 
 
-SELECT * FROM DEPARTAMENTO;
+SELECT NM_EMPREGADO FROM EMPREGADO WHERE ID_EMPREGADO<8000;
 SELECT * FROM EMPREGADO;
 SELECT * FROM GRADE_SALARIAL;
+
+
+SELECT nm_empregado, funcao, salario
+FROM empregado
+WHERE nm_empregado LIKE '%s%';
+
+SELECT nm_empregado
+FROM empregado
+WHERE nm_empregado LIKE 'M_LLER';
+
+
+SELECT nm_empregado, funcao, salario
+FROM empregado
+WHERE comissao IS NULL;
+
+
+SELECT nm_empregado, funcao, salario, id_departamento
+FROM empregado
+WHERE id_departamento IN (10,30)
+order by id_departamento;
+
+
+select nm_empregado, id_empregado
+from empregado
+where id_empregado = null or id_empregado>=0;
+
