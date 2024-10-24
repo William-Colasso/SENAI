@@ -37,6 +37,7 @@ public class DesignJFrame extends javax.swing.JFrame {
                 listaCliente.get(i).getEndereco()};
             modeloCli.addRow(linhaCli);
         }
+        
         jTbCli.setModel(modeloCli);
         jTbCli.getColumnModel().getColumn(0).setPreferredWidth(50);
         jTbCli.getColumnModel().getColumn(1).setPreferredWidth(250);
